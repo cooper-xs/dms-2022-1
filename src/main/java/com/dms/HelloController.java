@@ -1,4 +1,4 @@
-package com.dms.dms20221;
+package com.dms;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

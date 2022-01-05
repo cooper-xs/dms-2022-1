@@ -1,4 +1,4 @@
-package com.dms.dms20221;
+package com.dms;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
