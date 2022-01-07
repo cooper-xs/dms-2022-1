@@ -1,10 +1,10 @@
 package Dao.Implementation;
 
-import ApartmentUtil.DateFormat;
 import Dao.BaseDao;
 import Dao.Interfaces.LogDao;
 import Ex.InputValueException;
 import Po.Log;
+import DmsUtils.DateUtil;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -49,13 +49,13 @@ public class LogDaoImpl extends BaseDao implements LogDao {
                 pst.setString(3, log.getBuilding_id());
                 pst.setString(4, log.getDorm_id());
                 pst.setDouble(5, log.getPayment_account());
-                pst.setString(6, DateFormat.nowToDateTime());
+                pst.setString(6, DateUtil.nowToDateTime());
                 res = pst.executeUpdate();
             } else if(log.getType() == 2 || log.getType() == 3) {
                 pst = conn.prepareStatement(sql2);
                 pst.setString(1, log.getAccount_id());
                 pst.setInt(2, log.getType());
-                pst.setString(3, DateFormat.nowToDateTime());
+                pst.setString(3, DateUtil.nowToDateTime());
                 res = pst.executeUpdate();
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -78,7 +78,7 @@ public class LogDaoImpl extends BaseDao implements LogDao {
             pst = conn.prepareStatement(sql2);
             pst.setString(1, student_id);
             pst.setInt(2, 2);
-            pst.setString(3, DateFormat.nowToDateTime());
+            pst.setString(3, DateUtil.nowToDateTime());
             res2 = pst.executeUpdate();
             System.out.println("res1 = " + res1 + "   res2 = " + res2);
             if(res1 * res2 > 0) {
@@ -106,7 +106,7 @@ public class LogDaoImpl extends BaseDao implements LogDao {
             pst = conn.prepareStatement(sql2);
             pst.setString(1, student_id);
             pst.setInt(2, 3);
-            pst.setString(3, DateFormat.nowToDateTime());
+            pst.setString(3, DateUtil.nowToDateTime());
             res2 = pst.executeUpdate();
             System.out.println("res1 = " + res1 + "   res2 = " + res2);
             if(res1 * res2 > 0) {
@@ -141,7 +141,7 @@ public class LogDaoImpl extends BaseDao implements LogDao {
             pst.setString(2, building_id);
             pst.setString(3, dorm_id);
             pst.setDouble(4, value);
-            pst.setString(5, DateFormat.nowToDateTime());
+            pst.setString(5, DateUtil.nowToDateTime());
             res2 = pst.executeUpdate();
             if(res1 * res2 > 0) {
                 conn.commit();

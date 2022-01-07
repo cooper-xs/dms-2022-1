@@ -1,20 +1,18 @@
 package View;
 
 import javafx.application.Application;
-import javafx.geometry.Pos;
-import javafx.scene.Group;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class LoginView extends Application {
-    final Label message = new Label("");
+    @FXML
+    private Stage stage;//窗口对象
 
     public static void main(String[] args) {
         launch(args);
@@ -22,55 +20,37 @@ public class LoginView extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Group root = new Group();
-        Scene scene = new Scene(root, 430, 350);
-        stage.setScene(scene);
-
-        // note 布局
-        HBox hBoxAccount = new HBox();
-        hBoxAccount.setAlignment(Pos.CENTER);
-        hBoxAccount.setSpacing(10); // 内边距（各个组件之间的边距）
-
-        HBox hBoxPassword = new HBox();
-        hBoxPassword.setAlignment(Pos.CENTER);
-        hBoxPassword.setSpacing(10);
-
-        VBox vBox = new VBox();
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setSpacing(10);
-
-        // note 账户密码
-        Label labelAccount = new Label("账户：");
-        final TextField accountField = new TextField();
-
-        Label labelPassword = new Label("密码：");
-        final PasswordField passwordField = new PasswordField();
-
-        passwordField.setOnAction(actionEvent -> {
-            if(accountField.getText().equals("1") && passwordField.getText().equals("1")) {
-                message.setText("密码正确");
-                message.setTextFill(Color.BLACK);
-            } else if(!accountField.getText().equals("1")) {
-                message.setText("账号不存在");
-                message.setTextFill(Color.RED);
-            } else {
-                message.setText("密码错误");
-                message.setTextFill(Color.RED);
-            }
-        });
-
-
-        // note 按钮
-        Button buttonOk = new Button("登录");
-        buttonOk.setOnAction(passwordField.getOnAction());
-
-        hBoxAccount.getChildren().addAll(labelAccount, accountField);
-        hBoxPassword.getChildren().addAll(labelPassword, passwordField);
-        vBox.getChildren().addAll(hBoxAccount, hBoxPassword, message, buttonOk);
-
-        scene.setRoot(vBox);
-        stage.show();
+        this.stage = stage;
+        this.stage.setTitle("宿舍管理系统");
+        Scene loginScene = initLogin();
     }
 
+    public Scene initLogin() throws IOException {
+        // 1.新建fxmlLoad,设置fxml路径
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginView.class.getResource("Login.fxml"));
+        // 获取Controller用于关闭
+//        LoginController controller = fxmlLoader.getController();
+        // 2.生成对应的root
+        HBox root = fxmlLoader.load();
+        // 3.生成对应Scene
+        Scene scene = new Scene(root,700,500);
+        stage.setScene(scene);
+        stage.show();
+        return scene;
+    }
 
+    public Scene initStudentTable() throws IOException {
+        // 1.新建fxmlLoad,设置fxml路径
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginView.class.getResource("StudentTable.fxml"));
+        // 2.生成对应的root
+        Parent root = fxmlLoader.load();
+        // 3.生成对应Scene
+        Scene scene = new Scene(root,1200,800);
+        // 4.设置相关内容...
+        stage.setScene(scene);
+        stage.setTitle("学生界面");
+        // 5.显示
+        stage.show();
+        return scene;
+    }
 }

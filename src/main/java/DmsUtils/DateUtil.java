@@ -1,4 +1,4 @@
-package ApartmentUtil;
+package DmsUtils;
 
 import Ex.TimeIllegalException;
 
@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateFormat {
+public class DateUtil {
     // 当前时间 转换为 yyyy-MM-dd hh:mm:ss
     public static String nowToDateTime() {
         String strDate;

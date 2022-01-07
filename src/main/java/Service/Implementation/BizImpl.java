@@ -1,11 +1,9 @@
-package Controller.Implementation;
+package Service.Implementation;
 
-import Controller.Interfaces.Biz;
+import Service.Interfaces.Biz;
 import Dao.Implementation.*;
 import Dao.Interfaces.*;
-import Ex.InputValueException;
-import Ex.NoSuchAccountException;
-import Ex.PasswordWrongException;
+import Ex.*;
 import Po.*;
 
 import java.util.ArrayList;
@@ -24,15 +22,25 @@ public class BizImpl implements Biz {
      * 借助账户名和密码进行登录，成功则返回用户类型
      */
     @Override
-    public int Login(String account, String password) throws NoSuchAccountException, PasswordWrongException {
+    public int Login(String account, String password) throws NoSuchAccountException, PasswordWrongException, AccountInputEmptyException, PasswordInputEmptyException {
         int identity;
+        if(account.equals("")) {
+            // 输入账号为空
+            throw new AccountInputEmptyException();
+        }
+        if(password.equals("")) {
+            // 密码为空
+            throw new PasswordInputEmptyException();
+        }
         Register register = registerDao.selectById(account);
         if(register == null) {
+            // 用户不存在
             throw new NoSuchAccountException(account);
         }
         if(register.getPassword().equals(password)) {
             identity = register.getIdentity();
         } else {
+            // 密码错误
             throw new PasswordWrongException();
         }
         return identity;

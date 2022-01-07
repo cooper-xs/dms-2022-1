@@ -1,15 +1,13 @@
-package Controller.Interfaces;
+package Service.Interfaces;
 
-import Ex.InputValueException;
-import Ex.NoSuchAccountException;
-import Ex.PasswordWrongException;
+import Ex.*;
 import Po.*;
 
 import java.util.List;
 
 public interface Biz {
     // note 登录
-    public int Login(String account, String password) throws NoSuchAccountException, PasswordWrongException;
+    public int Login(String account, String password) throws NoSuchAccountException, PasswordWrongException, AccountInputEmptyException, PasswordInputEmptyException;
     // note 查找学生
     public Student selectStudentById(String student_id);
     // note 查找管理员

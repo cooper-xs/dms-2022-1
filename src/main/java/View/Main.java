@@ -1,12 +1,10 @@
 package View;
 
-import Controller.Implementation.BizImpl;
-import Controller.Interfaces.Biz;
+import Service.Implementation.BizImpl;
+import Service.Interfaces.Biz;
 import Dao.Implementation.RegisterDaoImpl;
 import Dao.Interfaces.RegisterDao;
-import Ex.InputValueException;
-import Ex.NoSuchAccountException;
-import Ex.PasswordWrongException;
+import Ex.*;
 import Po.Building;
 import Po.Dorm;
 import Po.Manager;
@@ -47,6 +45,10 @@ public class Main {
             System.out.println("用户" + account + "不存在");
         } catch (PasswordWrongException e) {
             System.out.println("密码错误");
+        } catch (PasswordInputEmptyException e) {
+            System.out.println("请输入密码");
+        } catch (AccountInputEmptyException e) {
+            System.out.println("请输入账号");
         }
         if(res == 0) {
             System.out.println("登录失败");

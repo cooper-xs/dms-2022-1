@@ -1,6 +1,8 @@
 package Dao;
 
+import java.io.FileInputStream;
 import java.sql.*;
+import java.util.Properties;
 
 public class BaseDao {
     protected Connection conn;
@@ -9,14 +11,18 @@ public class BaseDao {
 
     // 获得数据库连接
     public Connection getConnection() throws ClassNotFoundException, SQLException {
-        String url = "jdbc:mysql://localhost:3306/apartment" +
-                "?serverTimezone=Asia/Shanghai" +
-                "&useSSL=false" +
-                "&allowPublicKeyRetrieval=true" +
-                "&useUnicode=true&characterEncoding=UTF-8";
-        String user = "root";
-        String password = "root123456";
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Properties properties = new Properties();
+        try {
+            FileInputStream fis = new FileInputStream("src/main/java/db.properties");
+            properties.load(fis);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        String url = properties.getProperty("jdbcUrl");
+        String user = properties.getProperty("jdbcUser");
+        String password = properties.getProperty("jdbcPassword");
+        String Driver = properties.getProperty("jdbcDriver");
+        Class.forName(Driver);
         Connection conn = DriverManager.getConnection(url, user, password);
         closeAll();
         return conn;
