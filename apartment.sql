@@ -25,7 +25,7 @@ CREATE TABLE `student` (
                            `classes` char(10) NOT NULL COMMENT '班级',
                            `building_id` char(10) NOT NULL COMMENT '楼号',
                            `dorm_id` char(10) NOT NULL COMMENT '宿舍号',
-                           `bed_id` int(1) NOT NULL COMMENT '床号',
+                           `bed_id` int(10) NOT NULL COMMENT '床号',
                            `status` smallint(1) NOT NULL DEFAULT '0' COMMENT '状态（0表示不在，1表示在）',
                            PRIMARY KEY (`student_id`),
                            UNIQUE KEY `UNIQUE` (`contact`)
@@ -69,7 +69,16 @@ CREATE TABLE `register` (
                             UNIQUE KEY `UNIQUE` (`account`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `register` VALUES (1, '19110103024', '123'), (1, '20120101040', '123'), (1, '20110407122', '123'), (1, '20110504011', '123'), (2, '30120026375', '123'), (2, '30110521341', '123'), (3, 'admin', 'admin'), (1, '1', '1'), (2, '2', '2');
+INSERT INTO `register` VALUES
+                           (1, '19110103024', '202cb962ac59075b964b07152d234b70'),
+                           (1, '20120101040', '202cb962ac59075b964b07152d234b70'),
+                           (1, '20110407122', '202cb962ac59075b964b07152d234b70'),
+                           (1, '20110504011', '202cb962ac59075b964b07152d234b70'),
+                           (2, '30120026375', '202cb962ac59075b964b07152d234b70'),
+                           (2, '30110521341', '202cb962ac59075b964b07152d234b70'),
+                           (3, 'admin', '21232f297a57a5a743894a0e4a801fc3'),
+                           (1, '1', 'c4ca4238a0b923820dcc509a6f75849b'),
+                           (2, '2', 'c81e728d9d4c2f636f067f89cc14862c');
 
 -- 4.宿舍
 /*Table structure for table `dorm` */

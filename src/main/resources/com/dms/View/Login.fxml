@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
+      prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.dms.Controller.LoginController">
+   <VBox prefHeight="200.0" prefWidth="100.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="343.0" text="欢迎使用">
+         <font>
+            <Font size="33.0"/>
+         </font>
+         <VBox.margin>
+            <Insets top="50.0"/>
+         </VBox.margin>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="343.0" text="宿舍管理系统">
+         <font>
+            <Font size="33.0"/>
+         </font>
+      </Label>
+      <ImageView fitHeight="300.0" fitWidth="366.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../../../img/0x01.png"/>
+         <VBox.margin>
+            <Insets top="50.0"/>
+         </VBox.margin>
+      </ImageView>
+   </VBox>
+   <VBox alignment="TOP_RIGHT" prefHeight="500.0" prefWidth="367.0">
+      <HBox prefHeight="100.0" prefWidth="344.0">
+         <VBox.margin>
+            <Insets top="100.0"/>
+         </VBox.margin>
+         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="90.0" text="账号"
+                textAlignment="CENTER">
+            <HBox.margin>
+               <Insets top="30.0"/>
+            </HBox.margin>
+         </Label>
+         <TextField fx:id="id_accountIn" prefHeight="40.0" prefWidth="200.0" promptText="请输入账号">
+            <HBox.margin>
+               <Insets top="30.0"/>
+            </HBox.margin>
+         </TextField>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <opaqueInsets>
+            <Insets/>
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets/>
+         </VBox.margin>
+         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="90.0" text="密码"
+                textAlignment="CENTER">
+            <HBox.margin>
+               <Insets top="30.0"/>
+            </HBox.margin>
+         </Label>
+         <PasswordField fx:id="id_passwordIn" prefHeight="40.0" prefWidth="200.0" promptText="请输入密码">
+            <HBox.margin>
+               <Insets top="30.0"/>
+            </HBox.margin>
+         </PasswordField>
+      </HBox>
+      <Label fx:id="lab_message" alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="357.0"
+             textAlignment="CENTER"/>
+      <HBox prefHeight="147.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <VBox.margin>
+            <Insets top="30.0"/>
+         </VBox.margin>
+         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#on_reset"
+                 prefHeight="40.0" prefWidth="60.0" text="重置">
+            <HBox.margin>
+               <Insets left="80.0"/>
+            </HBox.margin>
+         </Button>
+         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#on_ok"
+                 prefHeight="40.0" prefWidth="60.0" text="登录">
+            <HBox.margin>
+               <Insets left="80.0"/>
+            </HBox.margin>
+         </Button>
+      </HBox>
+   </VBox>
+</HBox>
