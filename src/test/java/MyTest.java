@@ -12,6 +12,6 @@ public class MyTest {
     @Test
     public void TestSelectStudentByDorm() {
         Biz biz = new BizImpl();
-        System.out.println(biz.selectStudentByDorm("11", "518"));
+        System.out.println(biz.selectStudentByBuilding_idAndDorm_id("11", "518"));
     }
 }

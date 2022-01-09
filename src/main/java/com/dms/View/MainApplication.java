@@ -24,10 +24,10 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws Exception {
         this.primaryStage = stage;
         this.primaryStage.setTitle("宿舍管理系统");
-        initLogin();
+        initLogin(); // 打开窗口
     }
 
-    public Scene initLogin() throws IOException {
+    public void initLogin() throws IOException {
         // 1.新建fxmlLoad,设置fxml路径
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Login.fxml"));
         // 2.生成对应的root
@@ -37,13 +37,11 @@ public class MainApplication extends Application {
         controller.setLoginStage(primaryStage);
         // 4.生成对应Scene
         Scene scene = new Scene(root,700,500);
-//        Stage loginStage = primaryStage; // 好像没啥用
         primaryStage.setScene(scene);
         primaryStage.show();
-        return scene;
     }
 
-    public Scene initStudentTable() throws IOException {
+    public void initStudentTable() throws IOException {
         // 1.新建fxmlLoad,设置fxml路径
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("StudentTable.fxml"));
         // 2.生成对应的root
@@ -59,7 +57,6 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         // 5.显示
         stage.showAndWait();
-        return scene;
     }
 
     // todo

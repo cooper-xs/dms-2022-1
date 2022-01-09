@@ -93,7 +93,7 @@ public class Main {
                 }
             } else if(op == 2) {
                 try {
-                    biz.selectDormByBD(student.getBuilding_id(), student.getDorm_id());
+                    biz.selectDormByBuilding_idAndDorm_id(student.getBuilding_id(), student.getDorm_id());
                 } catch (NoSuchAccountException e) {
                     System.out.println("账户不存在");
                 }
@@ -110,7 +110,8 @@ public class Main {
                 }
             } else if(op == 3) {
                 try {
-                    biz.buildingShowOnStudent(student);
+                    Building building = biz.selectBuildingByBuilding_id(student.getBuilding_id());
+                    System.out.println(building);
                     Enter();
                 } catch (NoSuchAccountException e) {
                     System.out.println("楼宇不存在");
@@ -164,7 +165,7 @@ public class Main {
                     System.out.print("输入错误, 即将返回学生界面");
                 }
             } else if(op == 2) {
-                List<Building> buildingList = biz.searchBuildingsByManager_id(manager_id);
+                List<Building> buildingList = biz.selectBuildingsByManager_id(manager_id);
                 System.out.println(buildingList);
                 System.out.println("\n1 - 修改信息\n2 - 返回宿管界面");
                 System.out.print("请选择：");
@@ -178,8 +179,8 @@ public class Main {
                     System.out.print("输入错误, 即将返回学生界面");
                 }
             } else if(op == 3) {
-                List<Building> buildingList = biz.searchBuildingsByManager_id(manager_id);
-                List<Dorm> dormList = biz.searchDormsByBuilding_id(buildingList);
+                List<Building> buildingList = biz.selectBuildingsByManager_id(manager_id);
+                List<Dorm> dormList = biz.selectDormsByBuilding_id(buildingList);
                 System.out.println(dormList);
                 System.out.println("\n1 - 修改信息\n2 - 返回宿管界面");
                 System.out.print("请选择：");
@@ -209,7 +210,7 @@ public class Main {
                 }
                 System.out.println(result ? "缴费成功" : "缴费失败");
             } else if(op == 5) {
-                System.out.println(biz.searchAllLog());
+                System.out.println(biz.selectAllLog());
                 try {
                     Enter();
                 } catch (IOException e) {

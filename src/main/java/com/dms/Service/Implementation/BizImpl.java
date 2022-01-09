@@ -55,7 +55,7 @@ public class BizImpl implements Biz {
     }
 
     @Override
-    public List<Student> selectStudentByDorm(String building_id, String dorm_id) {
+    public List<Student> selectStudentByBuilding_idAndDorm_id(String building_id, String dorm_id) {
         List<Student> studentList = studentDao.selectAll();
         List<Student> studentReturn = new ArrayList<>();
         for(Student student : studentList) {
@@ -67,8 +67,25 @@ public class BizImpl implements Biz {
     }
 
     @Override
+    public List<Student> selectStudentByBuilding_id(String building_id) {
+        List<Student> studentList = studentDao.selectAll();
+        List<Student> studentReturn = new ArrayList<>();
+        for(Student student : studentList) {
+            if(student.getBuilding_id().equals(building_id)) {
+                studentReturn.add(student);
+            }
+        }
+        return studentReturn;
+    }
+
+    @Override
     public boolean updateStudentInfo(String student_id, Student student) {
         return studentDao.updateStudent(student_id, student) > 0;
+    }
+
+    @Override
+    public boolean updateDormInfo(String building_id, String dorm_id, Dorm dorm) {
+        return dormDao.updateDorm(building_id, dorm_id, dorm) > 0;
     }
 
     /**
@@ -98,7 +115,7 @@ public class BizImpl implements Biz {
      * 展示宿舍信息（在学生table上）
      */
     @Override
-    public Dorm selectDormByBD(String building_id, String dorm_id) throws NoSuchAccountException {
+    public Dorm selectDormByBuilding_idAndDorm_id(String building_id, String dorm_id) throws NoSuchAccountException {
         Dorm dorm = dormDao.selectById(building_id, dorm_id);
         if(dorm == null) {
             throw new NoSuchAccountException(building_id + "#" + dorm_id);
@@ -110,32 +127,32 @@ public class BizImpl implements Biz {
      * 展示楼宇信息（在学生table上）
      */
     @Override
-    public void buildingShowOnStudent(Student student) throws NoSuchAccountException {
-        String building_id = student.getBuilding_id();
+    public Building selectBuildingByBuilding_id(String building_id) throws NoSuchAccountException {
         Building building = buildingDao.selectById(building_id);
         if(building == null) {
             throw new NoSuchAccountException(building_id);
         }
-        System.out.println(building);
-        int cnt = 0;
-        List<Student> studentList = studentDao.selectAll();
-        for(Student student0 : studentList) {
-            if(student0.getBuilding_id().equals(building_id)) {
-                cnt ++;
-            }
-        }
-        System.out.println("与你住在一栋楼的还有：" + cnt + " 位同学");
-        List<Manager> managerList = managerDao.selectAll();
-        Manager manager = null;
-        for(Manager manager0 : managerList) {
-            if(manager0.getManager_id().equals(building.getManager_id())) {
-                manager = manager0;
-                break;
-            }
-        }
-        if(manager != null) {
-            System.out.println("你的宿管阿姨是：" + manager.getName() + " 联系方式：" + manager.getContact());
-        }
+//        System.out.println(building);
+//        int cnt = 0;
+//        List<Student> studentList = studentDao.selectAll();
+//        for(Student student0 : studentList) {
+//            if(student0.getBuilding_id().equals(building_id)) {
+//                cnt ++;
+//            }
+//        }
+//        System.out.println("与你住在一栋楼的还有：" + cnt + " 位同学");
+//        List<Manager> managerList = managerDao.selectAll();
+//        Manager manager = null;
+//        for(Manager manager0 : managerList) {
+//            if(manager0.getManager_id().equals(building.getManager_id())) {
+//                manager = manager0;
+//                break;
+//            }
+//        }
+//        if(manager != null) {
+//            System.out.println("你的宿管阿姨是：" + manager.getName() + " 联系方式：" + manager.getContact());
+//        }
+        return building;
     }
 
     /**
@@ -166,7 +183,7 @@ public class BizImpl implements Biz {
      * 返回一个管理员的全部管理楼栋
      */
     @Override
-    public List<Building> searchBuildingsByManager_id(String manager_id) {
+    public List<Building> selectBuildingsByManager_id(String manager_id) {
         List<Building> buildingList = new ArrayList<>();
         for(Building building : buildingDao.selectAll()) {
             if(Objects.equals(building.getManager_id(), manager_id)) {
@@ -180,7 +197,7 @@ public class BizImpl implements Biz {
      * 返回一栋楼的全部宿舍
      */
     @Override
-    public List<Dorm> searchDormsByBuilding_id(List<Building> buildingList) {
+    public List<Dorm> selectDormsByBuilding_id(List<Building> buildingList) {
         List<Dorm> dormList = new ArrayList<>();
         for(Dorm dorm : dormDao.selectAll()) {
             for(Building building : buildingList) {
@@ -196,7 +213,33 @@ public class BizImpl implements Biz {
      * 返回全部日志信息
      */
     @Override
-    public List<Log> searchAllLog() {
+    public List<Log> selectAllLog() {
         return logDao.selectAll();
+    }
+
+    @Override
+    public List<Log> selectLogByStudent_id(String student_id) {
+        List<Log> logReturn = new ArrayList<>();
+        List<Log> logList = selectAllLog();
+        for(Log log : logList) {
+            if(log.getAccount_id().equals(student_id)) {
+                logReturn.add(log);
+            }
+        }
+        return logReturn;
+    }
+
+    @Override
+    public List<Log> selectLogByBuilding_idAndDorm_id(String building_id, String dorm_id) {
+        List<Log> logReturn = new ArrayList<>();
+        List<Log> logList = selectAllLog();
+        for(Log log : logList) {
+            if(log.getType() == 1) {
+                if(log.getBuilding_id().equals(building_id) && log.getDorm_id().equals(dorm_id)) {
+                    logReturn.add(log);
+                }
+            }
+        }
+        return logReturn;
     }
 }

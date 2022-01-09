@@ -23,6 +23,7 @@ public class LogDaoImpl extends BaseDao implements LogDao {
                 Log log = new Log();
                 log.setLog_id(rs.getInt("log_id"));
                 log.setAccount_id(rs.getString("account_id"));
+                log.setAccount(rs.getDouble("payment_account"));
                 log.setType(rs.getInt("type"));
                 log.setBuilding_id(rs.getString("building_id"));
                 log.setDorm_id(rs.getString("dorm_id"));
@@ -48,7 +49,7 @@ public class LogDaoImpl extends BaseDao implements LogDao {
                 pst.setInt(2, log.getType());
                 pst.setString(3, log.getBuilding_id());
                 pst.setString(4, log.getDorm_id());
-                pst.setDouble(5, log.getPayment_account());
+                pst.setDouble(5, log.getAccount());
                 pst.setString(6, DateUtil.nowToDateTime());
                 res = pst.executeUpdate();
             } else if(log.getType() == 2 || log.getType() == 3) {
@@ -80,7 +81,6 @@ public class LogDaoImpl extends BaseDao implements LogDao {
             pst.setInt(2, 2);
             pst.setString(3, DateUtil.nowToDateTime());
             res2 = pst.executeUpdate();
-            System.out.println("res1 = " + res1 + "   res2 = " + res2);
             if(res1 * res2 > 0) {
                 conn.commit();
             } else {
@@ -108,7 +108,6 @@ public class LogDaoImpl extends BaseDao implements LogDao {
             pst.setInt(2, 3);
             pst.setString(3, DateUtil.nowToDateTime());
             res2 = pst.executeUpdate();
-            System.out.println("res1 = " + res1 + "   res2 = " + res2);
             if(res1 * res2 > 0) {
                 conn.commit();
             } else {
