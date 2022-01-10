@@ -31,8 +31,6 @@ public class StudentController {
     @FXML
     public Label lab_name;
     @FXML
-    public Label lab_identity;
-    @FXML
     public Tab tab_welcome;
     @FXML
     public Tab tab_person;
@@ -44,6 +42,8 @@ public class StudentController {
     public Tab tab_log;
     @FXML
     public Tab tab_money;
+    @FXML
+    public Tab tab_resetPassword;
     // x1 person模块
     @FXML
     public TextField txt_name;
@@ -113,6 +113,8 @@ public class StudentController {
     @FXML
     public Button but_message;
     @FXML
+    public Label lab_messageInLog;
+    @FXML
     public TableView<BeanLog> table_log;
     @FXML
     public TableColumn<BeanLog, Integer> col_sign_NO;
@@ -121,16 +123,27 @@ public class StudentController {
     @FXML
     public TableColumn<BeanLog, String> col_sign_type;
     // x5 money模块
-    public TextField txt_money_dromName;
+    @FXML
+    public TextField txt_money_dormName;
+    @FXML
     public TextField txt_money_deposit;
+    @FXML
     public TextField txt_money_toSave;
+    @FXML
     public Label lab_money_message;
+    @FXML
     public TableView<BeanMoney> table_money;
+    @FXML
     public TableColumn<BeanMoney, Integer> col_money_NO;
+    @FXML
     public TableColumn<BeanMoney, String> col_money_dormNumber;
+    @FXML
     public TableColumn<BeanMoney, String> col_money_account;
+    @FXML
     public TableColumn<BeanMoney, String> col_money_person;
+    @FXML
     public TableColumn<BeanMoney, String> col_money_personId;
+    @FXML
     public TableColumn<BeanMoney, String> col_money_date;
     /**
      * 初始化
@@ -143,17 +156,12 @@ public class StudentController {
             dorm = biz.selectDormByBuilding_idAndDorm_id(student.getBuilding_id(), student.getDorm_id());
             building = biz.selectBuildingByBuilding_id(student.getBuilding_id());
             manager = biz.selectManagerById(building.getManager_id());
-
         } catch (NoSuchAccountException e) {
             lab_messageInDorm.setText("尚未分配宿舍");
             lab_messageInDorm.setTextFill(Color.RED);
         }
         // note 设置tab_dorm中的信息
-        List<Student> students = biz.selectStudentByBuilding_idAndDorm_id(student.getBuilding_id(), student.getDorm_id());
-        for(Student student : students) {
-            BeanPerson beanPerson = new BeanPerson(student.getBuilding_id() + "#" + student.getDorm_id(), student.getBed_id() + "", student.getName(), student.getStudent_id(), student.getBirthday(), student.getContact(), student.getMajor(), student.getClasses(), (student.getStatus() == 1 ? "已签到" : "已签退"));
-            dataInDorm.add(beanPerson);
-        }
+        updateDormMessage();
         // note 设置tab_log中的信息
         but_message.setText(student.getStatus() == 1 ? "签退" : "签到");
         updateLogMessage();
@@ -161,7 +169,6 @@ public class StudentController {
         updateMoneyMessage();
         // note 设置主页面信息
         lab_name.setText(student.getName());
-        lab_identity.setText("！（学生）");
         // note 设置tab组件
         tabs_father.setTabClosingPolicy(TabPane.TabClosingPolicy.ALL_TABS);
         tab_welcome.setClosable(false);
@@ -172,22 +179,14 @@ public class StudentController {
         tabs_father.getTabs().remove(tab_money);
     }
 
+    // note 个人信息
     /**
      * note 显示个人信息tab
      * @param actionEvent
      */
     @FXML
     public void but_person(ActionEvent actionEvent) {
-        txt_name.setText(student.getName());
-        txt_gender.setText(student.getGender());
-        txt_birthday.setText(student.getBirthday());
-        txt_contact.setText(student.getContact());
-        txt_student_id.setText(student.getStudent_id());
-        txt_college.setText(student.getCollege());
-        txt_major.setText(student.getMajor());
-        txt_class.setText(student.getClasses());
-        txt_dorm_id.setText(student.getBuilding_id() + "#" + student.getDorm_id());
-        txt_bed_id.setText(student.getBed_id() + "");
+        updateStudentMessage();
         lab_messageInPerson.setText("");
         if(tabs_father.getTabs().contains(tab_person)) {
             SingleSelectionModel<Tab> selectionModel = tabs_father.getSelectionModel();
@@ -233,7 +232,7 @@ public class StudentController {
         student.setBed_id(Integer.parseInt(txt_bed_id.getText()));
         if(biz.updateStudentInfo(student.getStudent_id(), student)) {
             lab_messageInPerson.setText("保存成功！");
-            lab_messageInPerson.setTextFill(Color.BLACK);
+            lab_messageInPerson.setTextFill(Color.GREEN);
         } else {
             lab_messageInPerson.setText("保存失败！");
             lab_messageInPerson.setTextFill(Color.RED);
@@ -250,6 +249,7 @@ public class StudentController {
         txt_bed_id.setEditable(false);
     }
 
+    // note 宿舍信息
     /**
      * note 显示宿舍信息tab
      * @param actionEvent
@@ -296,8 +296,9 @@ public class StudentController {
     public void but_dormNameSave(ActionEvent actionEvent) {
         dorm.setName(txt_dormName.getText());
         if(biz.updateDormInfo(student.getBuilding_id(), student.getDorm_id(), dorm)) {
+            updateDormMessage();
             lab_messageInDorm.setText("保存成功！");
-            lab_messageInDorm.setTextFill(Color.BLACK);
+            lab_messageInDorm.setTextFill(Color.GREEN);
         } else {
             lab_messageInDorm.setText("保存失败！");
             lab_messageInDorm.setTextFill(Color.RED);
@@ -306,6 +307,7 @@ public class StudentController {
 
     }
 
+    // note 楼宇信息
     /**
      * note 显示楼宇信息tab
      * @param actionEvent
@@ -326,6 +328,7 @@ public class StudentController {
         tabs_father.getSelectionModel().select(tab_building);
     }
 
+    // note 签到信息
     /**
      * note 显示签到签退tab
      * @param actionEvent
@@ -346,50 +349,36 @@ public class StudentController {
     }
 
     /**
-     * 签到，签退操作
+     * note 签到，签退操作
      * @param actionEvent
      */
     @FXML
     public void but_sign_operation(ActionEvent actionEvent) {
         if(student.getStatus() == 1) { // 进行签退
-            biz.signOut(student.getStudent_id());
-            student.setStatus(0);
-            but_message.setText("签到");
-        } else if(student.getStatus() == 0){ // 进行签到
-            biz.signIn(student.getStudent_id());
-            student.setStatus(1);
-            but_message.setText("签退");
-        }
-        dataInLog.clear();
-        updateLogMessage();
-
-    }
-
-    /**
-     * 更新签到表格
-     */
-    private void updateLogMessage() {
-        List<Log> logList = biz.selectLogByStudent_id(student.getStudent_id());
-        int cnt_Log = 0;
-        Log logLast = null;
-        for(Log log : logList) {
-            BeanLog beanLog = null;
-            if(log.getType() == 2) {
-                beanLog = new BeanLog(++ cnt_Log, "签到", log.getDate());
-                logLast = log;
-            } else if(log.getType() == 3) {
-                beanLog = new BeanLog(++ cnt_Log, "签退", log.getDate());
-                logLast = log;
+            if(biz.signOut(student.getStudent_id())) {
+                student.setStatus(0);
+                but_message.setText("签到");
+                lab_messageInLog.setText("已签退");
+                lab_messageInLog.setTextFill(Color.GREEN);
+            } else {
+                lab_messageInLog.setText("签退失败");
+                lab_messageInLog.setTextFill(Color.RED);
             }
-            dataInLog.add(beanLog);
+        } else if(student.getStatus() == 0){ // 进行签到
+            if(biz.signIn(student.getStudent_id())) {
+                student.setStatus(1);
+                but_message.setText("签退");
+                lab_messageInLog.setText("已签到");
+                lab_messageInLog.setTextFill(Color.GREEN);
+            } else {
+                lab_messageInLog.setText("签到失败");
+                lab_messageInLog.setTextFill(Color.RED);
+            }
         }
-        if(logLast != null) {
-            txt_sign_time.setText(logLast.getDate());
-        } else {
-            txt_sign_time.setText("暂无记录");
-        }
+        updateLogMessage();
     }
 
+    // note 缴费信息
     /**
      * note 显示缴费tab
      * @param actionEvent
@@ -397,7 +386,7 @@ public class StudentController {
     @FXML
     public void but_saveMoney(ActionEvent actionEvent) {
         txt_money_deposit.setText(String.valueOf(dorm.getDeposit()));
-        txt_money_dromName.setText(dorm.getName());
+        txt_money_dormName.setText(dorm.getName());
         table_money.setItems(dataMoney);
         col_money_NO.setCellValueFactory(new PropertyValueFactory<BeanMoney, Integer>("NO"));
         col_money_dormNumber.setCellValueFactory(new PropertyValueFactory<BeanMoney, String>("dormNumber"));
@@ -418,6 +407,7 @@ public class StudentController {
      * note 宿舍缴费按钮
      * @param actionEvent
      */
+    @FXML
     public void but_money_toSave(ActionEvent actionEvent) {
         String valueIn = txt_money_toSave.getText();
         try{
@@ -425,7 +415,12 @@ public class StudentController {
             if(biz.saveMoney(student.getStudent_id(), dorm.getBuilding_id(), dorm.getDorm_id(), value)) {
                 lab_money_message.setText("缴费成功！");
                 lab_money_message.setTextFill(Color.GREEN);
-                dataMoney.clear();
+                try {
+                    dorm = biz.selectDormByBuilding_idAndDorm_id(dorm.getBuilding_id(), dorm.getDorm_id());
+                } catch (NoSuchAccountException e) {
+                    lab_messageInDorm.setText("尚未分配宿舍");
+                    lab_messageInDorm.setTextFill(Color.RED);
+                }
                 updateMoneyMessage();
             } else if(value == 0) {
                 lab_money_message.setText("缴费金额无效！");
@@ -441,20 +436,11 @@ public class StudentController {
             lab_money_message.setText("您输入了一个负数！");
             lab_money_message.setTextFill(Color.RED);
         }
+        txt_money_deposit.setText(String.valueOf(dorm.getDeposit()));
+        txt_money_toSave.setText("");
     }
 
-    /**
-     * 更新缴费表格
-     */
-    private void updateMoneyMessage() {
-        List<Log> logList = biz.selectLogByBuilding_idAndDorm_id(dorm.getBuilding_id(), dorm.getDorm_id());
-        int cnt_Log = 0;
-        for(Log log : logList) {
-            BeanMoney beanMoney = new BeanMoney(++ cnt_Log, log.getBuilding_id() + "#" + log.getDorm_id(), String.valueOf(log.getAccount()), biz.selectStudentById(log.getAccount_id()).getName(), log.getAccount_id(), log.getDate());
-            dataMoney.add(beanMoney);
-        }
-    }
-
+    // note 退出
     /**
      * note 保存所有信息，注销账号，关闭程序
      * @param actionEvent
@@ -465,5 +451,107 @@ public class StudentController {
         biz.updateDormInfo(student.getBuilding_id(), student.getDorm_id(), dorm);
         Session.setNumber("");
         Platform.exit();
+    }
+
+    // note 其他封装函数
+    /**
+     * 更新个人信息
+     */
+    private void updateStudentMessage() {
+        txt_name.setText(student.getName());
+        txt_gender.setText(student.getGender());
+        txt_birthday.setText(student.getBirthday());
+        txt_contact.setText(student.getContact());
+        txt_student_id.setText(student.getStudent_id());
+        txt_college.setText(student.getCollege());
+        txt_major.setText(student.getMajor());
+        txt_class.setText(student.getClasses());
+        txt_dorm_id.setText(student.getBuilding_id() + "#" + student.getDorm_id());
+        txt_bed_id.setText(student.getBed_id() + "");
+    }
+
+    /**
+     * 更新宿舍表格
+     */
+    private void updateDormMessage() {
+        txt_dormMoney.setText(String.valueOf(dorm.getDeposit()));
+        dataInDorm.clear();
+        List<Student> students = biz.selectStudentByBuilding_idAndDorm_id(student.getBuilding_id(), student.getDorm_id());
+        for(Student student : students) {
+            BeanPerson beanPerson = new BeanPerson(student.getBuilding_id() + "#" + student.getDorm_id(), student.getBed_id() + "", student.getName(), student.getStudent_id(), student.getBirthday(), student.getContact(), student.getMajor(), student.getClasses(), (student.getStatus() == 1 ? "已签到" : "已签退"));
+            dataInDorm.add(beanPerson);
+        }
+    }
+
+    /**
+     * 更新签到表格
+     */
+    private void updateLogMessage() {
+        dataInLog.clear();
+        List<Log> logList = biz.selectLogByStudent_id(student.getStudent_id());
+        int cnt_Log = 0;
+        Log logLast = null;
+        for(Log log : logList) {
+            BeanLog beanLog = null;
+            if(log.getType() == 2) {
+                beanLog = new BeanLog(++ cnt_Log, "签到", log.getDate());
+                logLast = log;
+                dataInLog.add(beanLog);
+            } else if(log.getType() == 3) {
+                beanLog = new BeanLog(++ cnt_Log, "签退", log.getDate());
+                logLast = log;
+                dataInLog.add(beanLog);
+            }
+        }
+        if(logLast != null) {
+            txt_sign_time.setText(logLast.getDate());
+        } else {
+            txt_sign_time.setText("暂无记录");
+        }
+    }
+
+    /**
+     * 更新缴费表格
+     */
+    private void updateMoneyMessage() {
+        txt_money_deposit.setText(String.valueOf(dorm.getDeposit()));
+        txt_money_dormName.setText(dorm.getName());
+        dataMoney.clear();
+        List<Log> logList = biz.selectLogByBuilding_idAndDorm_id(dorm.getBuilding_id(), dorm.getDorm_id());
+        int cnt_Log = 0;
+        for(Log log : logList) {
+            BeanMoney beanMoney = new BeanMoney(++ cnt_Log, log.getBuilding_id() + "#" + log.getDorm_id(), String.valueOf(log.getAccount()), biz.selectStudentById(log.getAccount_id()).getName(), log.getAccount_id(), log.getDate());
+            dataMoney.add(beanMoney);
+        }
+    }
+
+    /**
+     * 刷新所有
+     * @param actionEvent
+     */
+    public void but_refreshAll(ActionEvent actionEvent) {
+        try {
+            student = biz.selectStudentById(Session.getNumber());
+            dorm = biz.selectDormByBuilding_idAndDorm_id(student.getBuilding_id(), student.getDorm_id());
+            building = biz.selectBuildingByBuilding_id(student.getBuilding_id());
+            manager = biz.selectManagerById(building.getManager_id());
+        } catch (NoSuchAccountException e) {
+            lab_messageInDorm.setText("尚未分配宿舍");
+            lab_messageInDorm.setTextFill(Color.RED);
+        }
+        updateStudentMessage();
+        updateDormMessage();
+        updateLogMessage();
+        updateMoneyMessage();
+        lab_messageInPerson.setText("");
+        lab_messageInDorm.setText("");
+        lab_messageInLog.setText("");
+        lab_money_message.setText("");
+    }
+
+    // todo
+    @FXML
+    public void but_resetPassword(ActionEvent actionEvent) {
+
     }
 }

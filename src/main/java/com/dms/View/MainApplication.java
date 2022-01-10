@@ -60,7 +60,7 @@ public class MainApplication extends Application {
     }
 
     // todo
-    public Scene initManageTable() throws IOException {
+    public void initManageTable() throws IOException {
         // 1.新建fxmlLoad,设置fxml路径
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ManageTable.fxml"));
         // 2.生成对应的root
@@ -73,11 +73,10 @@ public class MainApplication extends Application {
         stage.setTitle("宿管界面");
         // 5.显示
         stage.show();
-        return scene;
     }
 
     // todo
-    public Scene initAdminTable() throws IOException {
+    public void initAdminTable() throws IOException {
         // 1.新建fxmlLoad,设置fxml路径
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AdminTable.fxml"));
         // 2.生成对应的root
@@ -91,6 +90,5 @@ public class MainApplication extends Application {
         stage.setTitle("超级管理员界面");
         // 5.显示
         stage.show();
-        return scene;
     }
 }
