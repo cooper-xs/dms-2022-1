@@ -5,6 +5,19 @@ public class Log {
     private double account;
     private String account_id, building_id, dorm_id, date;
 
+    @Override
+    public String toString() {
+        return "Log{" +
+                "log_id=" + log_id +
+                ", type=" + type +
+                ", account=" + account +
+                ", account_id='" + account_id + '\'' +
+                ", building_id='" + building_id + '\'' +
+                ", dorm_id='" + dorm_id + '\'' +
+                ", date='" + date + '\'' +
+                '}';
+    }
+
     public int getLog_id() {
         return log_id;
     }

@@ -3,6 +3,15 @@ package com.dms.Po;
 public class Manager {
     private String name, manager_id, contact;
 
+    public Manager() {
+    }
+
+    public Manager(String name, String manager_id, String contact) {
+        this.name = name;
+        this.manager_id = manager_id;
+        this.contact = contact;
+    }
+
     @Override
     public String toString() {
         return "manager{" +

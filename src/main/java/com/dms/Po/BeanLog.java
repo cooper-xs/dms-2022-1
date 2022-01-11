@@ -2,10 +2,11 @@ package com.dms.Po;
 
 public class BeanLog {
     private int NO;
-    private String type, date;
+    private String number, type, date;
 
-    public BeanLog(int NO, String type, String date) {
+    public BeanLog(int NO, String number, String type, String date) {
         this.NO = NO;
+        this.number = number;
         this.type = type;
         this.date = date;
     }
@@ -14,6 +15,7 @@ public class BeanLog {
     public String toString() {
         return "BeanLog{" +
                 "NO=" + NO +
+                ", number='" + number + '\'' +
                 ", type='" + type + '\'' +
                 ", date='" + date + '\'' +
                 '}';
@@ -25,6 +27,14 @@ public class BeanLog {
 
     public void setNO(int NO) {
         this.NO = NO;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getType() {

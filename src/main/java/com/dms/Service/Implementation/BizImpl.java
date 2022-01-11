@@ -88,6 +88,11 @@ public class BizImpl implements Biz {
         return dormDao.updateDorm(building_id, dorm_id, dorm) > 0;
     }
 
+    @Override
+    public boolean updateManagerInfo(String manager_id, Manager manager) {
+        return managerDao.updateManager(manager_id, manager) > 0;
+    }
+
     /**
      * 直接找到管理员
      */
@@ -213,16 +218,19 @@ public class BizImpl implements Biz {
      * 返回一栋楼的全部宿舍
      */
     @Override
-    public List<Dorm> selectDormsByBuilding_id(List<Building> buildingList) {
+    public List<Dorm> selectDormByBuilding_id(String building_id) {
         List<Dorm> dormList = new ArrayList<>();
         for(Dorm dorm : dormDao.selectAll()) {
-            for(Building building : buildingList) {
-                if(Objects.equals(building.getBuilding_id(), dorm.getBuilding_id())) {
-                    dormList.add(dorm);
-                }
+            if(Objects.equals(building_id, dorm.getBuilding_id())) {
+                dormList.add(dorm);
             }
         }
         return dormList;
+    }
+
+    @Override
+    public List<Dorm> selectAllDorm() {
+        return dormDao.selectAll();
     }
 
     /**

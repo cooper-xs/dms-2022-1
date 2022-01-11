@@ -4,7 +4,11 @@ import com.dms.Ex.TimeIllegalException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class DateUtil {
     // 当前时间 转换为 yyyy-MM-dd hh:mm:ss
@@ -14,6 +18,22 @@ public class DateUtil {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         strDate = simpleDateFormat.format(date);
         return strDate;
+    }
+
+    public static long stringToLong(String date) {
+        long sec = 0;
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());
+            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+0"));
+            sec = simpleDateFormat.parse(date).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return sec;
+    }
+
+    public static long localDateToLong(LocalDate date) {
+        return date.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 
     // 年月日 转化为 数据库中的格式

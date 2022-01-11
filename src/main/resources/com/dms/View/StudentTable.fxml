@@ -394,9 +394,9 @@
                             </padding>
                             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="895.0" spacing="50.0">
                                 <Label alignment="CENTER" prefHeight="40.0" prefWidth="60.0" text="宿舍：" />
-                                <TextField fx:id="txt_money_dormName" prefHeight="40.0" prefWidth="170.0" />
+                                <TextField fx:id="txt_money_dormName" editable="false" prefHeight="40.0" prefWidth="170.0" />
                                 <Label alignment="CENTER" prefHeight="40.0" prefWidth="60.0" text="剩余金额：" />
-                                <TextField fx:id="txt_money_deposit" prefHeight="40.0" prefWidth="170.0" />
+                                <TextField fx:id="txt_money_deposit" editable="false" prefHeight="40.0" prefWidth="170.0" />
                             </HBox>
                             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                                 <Label alignment="CENTER" prefHeight="40.0" prefWidth="70.0" text="缴费金额：" />
@@ -409,7 +409,7 @@
                                     <TableColumn fx:id="col_money_NO" editable="false" resizable="false" text="序号" />
                                     <TableColumn fx:id="col_money_dormNumber" editable="false" prefWidth="140.0" resizable="false" text="宿舍" />
                                     <TableColumn fx:id="col_money_account" editable="false" prefWidth="140.0" resizable="false" text="缴费金额" />
-                                    <TableColumn fx:id="col_money_person" editable="false" minWidth="0.0" prefWidth="140.0" resizable="false" text="缴费人" />
+                                    <TableColumn fx:id="col_money_person" editable="false" minWidth="0.0" prefWidth="140.0" resizable="false" text="缴费账号" />
                                     <TableColumn fx:id="col_money_personId" editable="false" prefWidth="140.0" resizable="false" text="缴费人学号" />
                                     <TableColumn fx:id="col_money_date" editable="false" prefWidth="194.0" resizable="false" text="时间" />
                                 </columns>

@@ -76,7 +76,9 @@ public class ManagerDaoImpl extends BaseDao implements ManagerDao {
         try {
             conn = getConnection();
             pst = conn.prepareStatement(sql);
-            pst.setString(1, manager_id);
+            pst.setString(1, manager.getName());
+            pst.setString(2, manager.getContact());
+            pst.setString(3, manager_id);
             res = pst.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

@@ -26,7 +26,7 @@ import java.util.List;
 
 public class StudentController {
 
-    public static Biz biz = new BizImpl();
+    private static Biz biz = new BizImpl();
     private Student student;
     private Student observed;
     private Dorm dorm;
@@ -52,6 +52,8 @@ public class StudentController {
     public Tab tab_money;
     @FXML
     public Tab tab_resetPassword;
+    @FXML
+    public TabPane tabs_father;
     // x1 person模块
     @FXML
     public TextField txt_name;
@@ -69,15 +71,13 @@ public class StudentController {
     public TextField txt_major;
     @FXML
     public TextField txt_class;
-    // x2 dorm模块
     @FXML
     public TextField txt_dorm_id;
     @FXML
     public TextField txt_bed_id;
     @FXML
-    public TabPane tabs_father;
-    @FXML
     public Label lab_messageInPerson;
+    // x2 dorm模块
     @FXML
     public TableView<BeanPerson> table_dorm;
     @FXML
@@ -243,6 +243,7 @@ public class StudentController {
         col_major.setCellValueFactory(new PropertyValueFactory<BeanPerson, String>("major"));
         col_class.setCellValueFactory(new PropertyValueFactory<BeanPerson, String>("classes"));
         col_state.setCellValueFactory(new PropertyValueFactory<BeanPerson, String>("state"));
+//        col_operate.setCellValueFactory(new PropertyValueFactory<BeanPerson, Boolean>("operate")); // 不必设置
         // x2 日志
         table_log.setItems(dataInLog);
         col_sign_NO.setCellValueFactory(new PropertyValueFactory<BeanLog, Integer>("NO"));
@@ -301,6 +302,17 @@ public class StudentController {
      */
     @FXML
     public void but_personSave(ActionEvent actionEvent) {
+        // note 设置不可编辑
+        txt_name.setEditable(false);
+        txt_gender.setEditable(false);
+        txt_birthday.setEditable(false);
+        txt_contact.setEditable(false);
+        txt_student_id.setEditable(false);
+        txt_college.setEditable(false);
+        txt_major.setEditable(false);
+        txt_class.setEditable(false);
+        txt_dorm_id.setEditable(false);
+        txt_bed_id.setEditable(false);
         // note 保存信息到student
         student.setName(txt_name.getText());
         student.setBirthday(txt_birthday.getText());
@@ -323,17 +335,6 @@ public class StudentController {
             lab_messageInPerson.setText("保存失败！");
             lab_messageInPerson.setTextFill(Color.RED);
         }
-        // note 设置不可编辑
-        txt_name.setEditable(false);
-        txt_gender.setEditable(false);
-        txt_birthday.setEditable(false);
-        txt_contact.setEditable(false);
-        txt_student_id.setEditable(false);
-        txt_college.setEditable(false);
-        txt_major.setEditable(false);
-        txt_class.setEditable(false);
-        txt_dorm_id.setEditable(false);
-        txt_bed_id.setEditable(false);
     }
 
     // note 宿舍信息
@@ -506,6 +507,7 @@ public class StudentController {
      */
     @FXML
     public void but_logout(ActionEvent actionEvent) {
+        // note 关闭程序前保存信息，清空Session缓存
         biz.updateStudentInfo(Session.getNumber(), student);
         biz.updateDormInfo(student.getBuilding_id(), student.getDorm_id(), dorm);
         Session.setNumber("");
@@ -539,6 +541,7 @@ public class StudentController {
             lab_messageInDorm.setText("");
             lab_messageInLog.setText("");
             lab_money_message.setText("");
+            lab_message_password.setText("");
             // note 设置学生tab
             txt_name.setText(observed.getName());
             txt_gender.setText(observed.getGender());
@@ -573,11 +576,11 @@ public class StudentController {
             for(Log log : signLogList) {
                 BeanLog beanLog = null;
                 if(log.getType() == 2) {
-                    beanLog = new BeanLog(++cntSignLog, "签到", log.getDate());
+                    beanLog = new BeanLog(++cntSignLog, log.getAccount_id(), "签到", log.getDate());
                     logLast = log;
                     dataInLog.add(beanLog);
                 } else if(log.getType() == 3) {
-                    beanLog = new BeanLog(++cntSignLog, "签退", log.getDate());
+                    beanLog = new BeanLog(++cntSignLog, log.getAccount_id(), "签退", log.getDate());
                     logLast = log;
                     dataInLog.add(beanLog);
                 }
@@ -594,7 +597,7 @@ public class StudentController {
             List<Log> moneyLogList = biz.selectLogByBuilding_idAndDorm_id(dorm.getBuilding_id(), dorm.getDorm_id());
             int cntMoneyLog = 0;
             for(Log log : moneyLogList) {
-                BeanMoney beanMoney = new BeanMoney(++cntMoneyLog, log.getBuilding_id() + "#" + log.getDorm_id(), String.valueOf(log.getAccount()), biz.selectStudentById(log.getAccount_id()).getName(), log.getAccount_id(), log.getDate());
+                BeanMoney beanMoney = new BeanMoney(++cntMoneyLog, log.getBuilding_id() + "#" + log.getDorm_id(), String.valueOf(log.getAccount()), log.getAccount_id(), log.getAccount_id(), log.getDate());
                 dataMoney.add(beanMoney);
             }
         } catch (NoSuchAccountException e) {

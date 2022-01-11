@@ -48,14 +48,16 @@ public class LoginController {
         try {
             res = biz.Login(id_accountIn.getText(), TranMD5.md5(id_passwordIn.getText()));
             lab_message.setText("登录成功");
-            lab_message.setTextFill(Color.BLACK);
+            lab_message.setTextFill(Color.GREEN);
             Session.setNumber(id_accountIn.getText());
             if(res == 1) {
                 this.LoginStage.close();
                 new MainApplication().initStudentTable();
             } else if(res == 2) {
+                this.LoginStage.close();
                 new MainApplication().initManageTable();
             } else if(res == 3) {
+                this.LoginStage.close();
                 new MainApplication().initAdminTable();
             }
         } catch (NoSuchAccountException e) {

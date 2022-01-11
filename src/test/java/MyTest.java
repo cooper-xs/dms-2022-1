@@ -1,7 +1,9 @@
 import com.dms.DmsUtils.TranMD5;
+import com.dms.DmsUtils.DateUtil;
 import com.dms.Ex.PasswordNotSameException;
 import com.dms.Ex.PasswordSameWithBeforeException;
 import com.dms.Ex.PasswordWrongException;
+import com.dms.Po.Manager;
 import com.dms.Service.Implementation.BizImpl;
 import com.dms.Service.Interfaces.Biz;
 import org.junit.Test;
@@ -30,5 +32,16 @@ public class MyTest {
         } catch (PasswordSameWithBeforeException e) {
             System.out.println("与之前的密码相同");
         }
+    }
+
+    @Test
+    public void TestUpdateManager() {
+        Biz biz = new BizImpl();
+        System.out.println(biz.updateManagerInfo("2", new Manager("333", "2", "123123")));
+    }
+
+    @Test
+    public void TestSecTime() {
+        System.out.println(DateUtil.stringToLong("2022-01-11 09:45:15"));
     }
 }

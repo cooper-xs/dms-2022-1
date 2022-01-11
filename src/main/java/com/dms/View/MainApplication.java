@@ -38,6 +38,7 @@ public class MainApplication extends Application {
         // 4.生成对应Scene
         Scene scene = new Scene(root,700,500);
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
@@ -62,20 +63,20 @@ public class MainApplication extends Application {
     // todo
     public void initManageTable() throws IOException {
         // 1.新建fxmlLoad,设置fxml路径
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ManageTable.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ManagerTable.fxml"));
         // 2.生成对应的root
         Parent root = fxmlLoader.load();
         // 3.生成对应Scene
         Scene scene = new Scene(root,1200,800);
         // 4.设置相关内容...
         Stage stage = new Stage();
-        stage.setTitle("宿管界面");
+        stage.setTitle("宿舍管理员界面");
         stage.setResizable(false); // 不可调整大小
 //        stage.initModality(Modality.APPLICATION_MODAL); // 设置窗口模态
         stage.initOwner(primaryStage); // stage 的拥有者是 primaryStage
         stage.setScene(scene);
         // 5.显示
-        stage.show();
+        stage.showAndWait();
     }
 
     // todo
