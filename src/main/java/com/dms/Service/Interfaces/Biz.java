@@ -39,6 +39,8 @@ public interface Biz {
     // note 展示管理员个人信息
     void managerShowOnAll(Manager manager); // todo delete
     // x3 操作
+    // note 修改密码
+    boolean resetPassword(String account, String passwordBefore, String passwordNew, String passwordRepeat) throws PasswordWrongException, PasswordNotSameException, PasswordSameWithBeforeException;
     // note 通过id签到
     boolean signIn(String student_id) ;
     // note 通过id签退

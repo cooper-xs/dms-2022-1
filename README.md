@@ -34,3 +34,5 @@ idea中自定义注释，通过正则实现
 
 #### classpath源文件学习
 
+#### Platform.exit()和System.exit(0)
+

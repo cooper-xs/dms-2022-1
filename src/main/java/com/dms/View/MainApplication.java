@@ -52,7 +52,7 @@ public class MainApplication extends Application {
         Stage stage = new Stage();
         stage.setTitle("学生界面");
         stage.setResizable(false); // 不可调整大小
-        stage.initModality(Modality.APPLICATION_MODAL); // 设置窗口模态
+//        stage.initModality(Modality.APPLICATION_MODAL); // 设置窗口模态
         stage.initOwner(primaryStage); // stage 的拥有者是 primaryStage
         stage.setScene(scene);
         // 5.显示
@@ -69,8 +69,11 @@ public class MainApplication extends Application {
         Scene scene = new Scene(root,1200,800);
         // 4.设置相关内容...
         Stage stage = new Stage();
-        stage.setScene(scene);
         stage.setTitle("宿管界面");
+        stage.setResizable(false); // 不可调整大小
+//        stage.initModality(Modality.APPLICATION_MODAL); // 设置窗口模态
+        stage.initOwner(primaryStage); // stage 的拥有者是 primaryStage
+        stage.setScene(scene);
         // 5.显示
         stage.show();
     }
@@ -84,10 +87,12 @@ public class MainApplication extends Application {
         // 3.生成对应Scene
         Scene scene = new Scene(root,1200,800);
         // 4.设置相关内容...
-        this.primaryStage.hide();
         Stage stage = new Stage();
+        stage.setTitle("admin界面");
+        stage.setResizable(false); // 不可调整大小
+//        stage.initModality(Modality.APPLICATION_MODAL); // 设置窗口模态
+        stage.initOwner(primaryStage); // stage 的拥有者是 primaryStage
         stage.setScene(scene);
-        stage.setTitle("超级管理员界面");
         // 5.显示
         stage.show();
     }

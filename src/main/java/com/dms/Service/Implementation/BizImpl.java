@@ -111,6 +111,22 @@ public class BizImpl implements Biz {
         System.out.println(manager);
     }
 
+    @Override
+    public boolean resetPassword(String account, String passwordBefore, String passwordNew, String passwordRepeat) throws PasswordWrongException, PasswordNotSameException, PasswordSameWithBeforeException {
+        Register register = registerDao.selectById(account);
+
+        if(!register.getPassword().equals(passwordBefore)) {
+            throw new PasswordWrongException();
+        }
+        if(!passwordNew.equals(passwordRepeat)) {
+            throw new PasswordNotSameException();
+        }
+        if(passwordBefore.equals(passwordNew)) {
+            throw new PasswordSameWithBeforeException();
+        }
+        return registerDao.updateRegister(account, passwordNew) > 0;
+    }
+
     /**
      * 展示宿舍信息（在学生table上）
      */

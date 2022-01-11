@@ -29,12 +29,10 @@
                     </Label>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
-                    <Button mnemonicParsing="false" onAction="#but_resetPassword" prefHeight="40.0" prefWidth="70.0"
-                            text="修改密码"/>
-                    <Button mnemonicParsing="false" onAction="#but_refreshAll" prefHeight="40.0" prefWidth="70.0"
-                            text="刷新信息">
+                    <Button mnemonicParsing="false" onAction="#but_reset" prefHeight="40.0" prefWidth="70.0" text="修改密码" />
+                    <Button mnemonicParsing="false" onAction="#but_refreshAll" prefHeight="40.0" prefWidth="70.0" text="刷新信息">
                         <HBox.margin>
-                            <Insets/>
+                            <Insets />
                         </HBox.margin>
                     </Button>
                 </HBox>
@@ -60,7 +58,7 @@
                     </Button>
                 </HBox>
                 <HBox prefHeight="70.0" prefWidth="200.0">
-                    <Button mnemonicParsing="false" onAction="#but_signAndOut" prefHeight="70.0" prefWidth="170.0" text="签到/签退">
+                    <Button mnemonicParsing="false" onAction="#but_signInAndOut" prefHeight="70.0" prefWidth="170.0" text="签到/签退">
                         <HBox.margin>
                             <Insets left="65.0" />
                         </HBox.margin>
@@ -104,7 +102,7 @@
                         </VBox>
                     </AnchorPane>
                 </Tab>
-                <Tab fx:id="tab_person" text="个人信息">
+                <Tab fx:id="tab_person" text="学生信息">
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                         <VBox prefHeight="769.0" prefWidth="895.0">
                             <HBox prefHeight="80.0" prefWidth="895.0">
@@ -250,71 +248,72 @@
                 <Tab fx:id="tab_dorm" text="宿舍信息">
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                         <VBox prefHeight="770.0" prefWidth="895.0">
-                            <padding>
-                                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                            </padding>
-                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                <padding>
-                                    <Insets top="30.0" />
-                                </padding>
-                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="宿舍名称">
-                                    <HBox.margin>
-                                        <Insets left="40.0" />
-                                    </HBox.margin>
-                                    <font>
-                                        <Font name="System Bold" size="16.0" />
-                                    </font>
-                                </Label>
-                                <TextField fx:id="txt_dormName" editable="false" prefHeight="40.0" prefWidth="200.0">
-                                    <HBox.margin>
-                                        <Insets left="20.0" />
-                                    </HBox.margin>
-                                </TextField>
-                                <Button mnemonicParsing="false" onAction="#but_dormNameEdit" prefHeight="40.0" prefWidth="60.0" text="修改">
-                                    <HBox.margin>
-                                        <Insets left="20.0" />
-                                    </HBox.margin>
-                                </Button>
-                                <Button mnemonicParsing="false" onAction="#but_dormNameSave" prefHeight="40.0" prefWidth="60.0" text="保存">
-                                    <HBox.margin>
-                                        <Insets left="20.0" />
-                                    </HBox.margin>
-                                </Button>
-                                <Label fx:id="lab_messageInDorm" alignment="CENTER" prefHeight="40.0" prefWidth="90.0">
-                                    <HBox.margin>
-                                        <Insets left="20.0" />
-                                    </HBox.margin>
-                                </Label>
-                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="宿舍金额">
-                                    <font>
-                                        <Font name="System Bold" size="16.0" />
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets left="30.0" />
-                                    </HBox.margin>
-                                </Label>
-                                <TextField fx:id="txt_dormMoney" editable="false" prefHeight="40.0" prefWidth="120.0">
-                                    <HBox.margin>
-                                        <Insets left="20.0" />
-                                    </HBox.margin>
-                                </TextField>
+                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="13.0">
+                                <children>
+                                    <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="宿舍名称">
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                        <font>
+                                            <Font name="System Bold" size="16.0" />
+                                        </font>
+                                    </Label>
+                                    <TextField fx:id="txt_dormName" editable="false" prefHeight="40.0" prefWidth="170.0">
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </TextField>
+                                    <Button mnemonicParsing="false" onAction="#but_dormNameEdit" prefHeight="40.0" prefWidth="60.0" text="修改">
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#but_dormNameSave" prefHeight="40.0" prefWidth="60.0" text="保存">
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </Button>
+                                    <Label fx:id="lab_messageInDorm" alignment="CENTER" prefHeight="40.0" prefWidth="90.0">
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="宿舍金额">
+                                        <font>
+                                            <Font name="System Bold" size="16.0" />
+                                        </font>
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="txt_dormMoney" editable="false" prefHeight="40.0" prefWidth="120.0">
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </TextField>
+                                    <Button mnemonicParsing="false" onAction="#but_saveMoney" prefHeight="40.0" prefWidth="80.0" text="前往缴费" />
+                                </children>
                             </HBox>
                             <TableView fx:id="table_dorm" prefHeight="435.0" prefWidth="456.0">
                                 <columns>
-                                    <TableColumn fx:id="col_dorm" prefWidth="75.0" text="宿舍号" />
-                                    <TableColumn fx:id="col_bed" prefWidth="75.0" text="床位号" />
-                                    <TableColumn fx:id="col_name" prefWidth="100.0" text="姓名" />
-                                    <TableColumn fx:id="col_number" prefWidth="110.0" text="学号" />
-                                    <TableColumn fx:id="col_birthday" prefWidth="100.0" text="生日" />
-                                    <TableColumn fx:id="col_contact" prefWidth="110.0" text="联系方式" />
-                                    <TableColumn fx:id="col_major" prefWidth="125.0" text="专业" />
-                                    <TableColumn fx:id="col_class" prefWidth="75.0" text="班级" />
-                                    <TableColumn fx:id="col_state" prefWidth="65.0" text="状态" />
+                                    <TableColumn fx:id="col_dorm" editable="false" maxWidth="100.0" prefWidth="70.0" resizable="false" text="宿舍号" />
+                                    <TableColumn fx:id="col_bed" editable="false" prefWidth="70.0" resizable="false" text="床位号" />
+                                    <TableColumn fx:id="col_name" editable="false" prefWidth="90.0" resizable="false" text="姓名" />
+                                    <TableColumn fx:id="col_number" editable="false" prefWidth="110.0" resizable="false" text="学号" />
+                                    <TableColumn fx:id="col_birthday" editable="false" prefWidth="90.0" resizable="false" sortable="false" text="生日" />
+                                    <TableColumn fx:id="col_contact" editable="false" prefWidth="105.0" resizable="false" sortable="false" text="联系方式" />
+                                    <TableColumn fx:id="col_major" editable="false" prefWidth="125.0" resizable="false" sortable="false" text="专业" />
+                                    <TableColumn fx:id="col_class" editable="false" prefWidth="70.0" resizable="false" sortable="false" text="班级" />
+                                    <TableColumn fx:id="col_state" editable="false" prefWidth="60.0" resizable="false" sortable="false" text="状态" />
+                                    <TableColumn fx:id="col_operate" editable="false" prefWidth="65.0" resizable="false" sortable="false" text="操作" />
                                 </columns>
                                 <VBox.margin>
                                     <Insets />
                                 </VBox.margin>
                             </TableView>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
                         </VBox>
                     </AnchorPane>
                 </Tab>
@@ -376,9 +375,9 @@
                             </HBox>
                             <TableView fx:id="table_log" prefHeight="420.0" prefWidth="635.0">
                                 <columns>
-                                    <TableColumn fx:id="col_sign_NO" text="序号" />
-                                    <TableColumn fx:id="col_sign_time" prefWidth="398.0" text="时间" />
-                                    <TableColumn fx:id="col_sign_type" minWidth="0.0" prefWidth="155.0" text="操作" />
+                                    <TableColumn fx:id="col_sign_NO" editable="false" prefWidth="90.0" resizable="false" sortable="false" text="序号" />
+                                    <TableColumn fx:id="col_sign_time" editable="false" prefWidth="398.0" resizable="false" sortable="false" text="时间" />
+                                    <TableColumn fx:id="col_sign_type" editable="false" prefWidth="145.0" resizable="false" sortable="false" text="操作" />
                                 </columns>
                                 <VBox.margin>
                                     <Insets left="100.0" right="100.0" top="50.0" />
@@ -407,12 +406,12 @@
                             </HBox>
                             <TableView fx:id="table_money" prefHeight="420.0" prefWidth="835.0">
                                 <columns>
-                                    <TableColumn fx:id="col_money_NO" text="序号" />
-                                    <TableColumn fx:id="col_money_dormNumber" prefWidth="140.0" text="宿舍" />
-                                    <TableColumn fx:id="col_money_account" prefWidth="140.0" text="缴费金额" />
-                                    <TableColumn fx:id="col_money_person" minWidth="0.0" prefWidth="140.0" text="缴费人" />
-                                    <TableColumn fx:id="col_money_personId" prefWidth="140.0" text="缴费人学号" />
-                                    <TableColumn fx:id="col_money_date" prefWidth="194.0" text="时间" />
+                                    <TableColumn fx:id="col_money_NO" editable="false" resizable="false" text="序号" />
+                                    <TableColumn fx:id="col_money_dormNumber" editable="false" prefWidth="140.0" resizable="false" text="宿舍" />
+                                    <TableColumn fx:id="col_money_account" editable="false" prefWidth="140.0" resizable="false" text="缴费金额" />
+                                    <TableColumn fx:id="col_money_person" editable="false" minWidth="0.0" prefWidth="140.0" resizable="false" text="缴费人" />
+                                    <TableColumn fx:id="col_money_personId" editable="false" prefWidth="140.0" resizable="false" text="缴费人学号" />
+                                    <TableColumn fx:id="col_money_date" editable="false" prefWidth="194.0" resizable="false" text="时间" />
                                 </columns>
                             </TableView>
                         </VBox>
@@ -420,7 +419,49 @@
                 </Tab>
                 <Tab fx:id="tab_resetPassword" text="修改密码">
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-<!--                        拖拽东西到最后一个tab标签，它会自动在这里显示-->
+                        <VBox prefHeight="770.0" prefWidth="895.0">
+                            <padding>
+                                <Insets bottom="30.0" left="30.0" right="30.0" top="200.0" />
+                            </padding>
+                            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="50.0">
+                                <VBox.margin>
+                                    <Insets bottom="30.0" />
+                                </VBox.margin>
+                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="120.0" text="请输入原始密码" />
+                                <PasswordField fx:id="txt_passwordBefore" prefHeight="40.0" prefWidth="200.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></PasswordField>
+                            </HBox>
+                            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="200.0" spacing="50.0">
+                                <VBox.margin>
+                                    <Insets bottom="30.0" />
+                                </VBox.margin>
+                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="120.0" text="请输入新密码" />
+                                <PasswordField fx:id="txt_passwordNewOne" prefHeight="40.0" prefWidth="200.0">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </PasswordField>
+                            </HBox>
+                            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="50.0">
+                                <VBox.margin>
+                                    <Insets />
+                                </VBox.margin>
+                                <Label prefHeight="40.0" text="请再次输入一次新密码" />
+                                <PasswordField fx:id="txt_passwordNewTow" prefHeight="40.0" prefWidth="200.0" />
+                            </HBox>
+                            <Label fx:id="lab_message_password" alignment="CENTER" prefHeight="55.0" prefWidth="835.0">
+                        <VBox.margin>
+                           <Insets />
+                        </VBox.margin></Label>
+                            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="835.0">
+                                <VBox.margin>
+                                    <Insets />
+                                </VBox.margin>
+                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_resetPassword" prefHeight="40.0" prefWidth="80.0" text="修改密码" />
+                            </HBox>
+                        </VBox>
                     </AnchorPane>
                 </Tab>
             </TabPane>
