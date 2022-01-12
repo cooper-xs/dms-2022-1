@@ -1,5 +1,6 @@
 package com.dms.Controller;
 
+import com.dms.DmsUtils.TranMD5;
 import com.dms.Po.*;
 import com.dms.Service.Implementation.BizImpl;
 import com.dms.Service.Interfaces.Biz;
@@ -105,6 +106,7 @@ public class AdminController {
         tabs_father.getTabs().remove(tab_managerMessage);
         tabs_father.getTabs().remove(tab_buildingManager);
         tabs_father.getTabs().remove(tab_buildingMessage);
+        tabs_father.getTabs().remove(tab_resetPassword);
         /* note 设置内部TableView数据源 */
         // x1 管理员table
         table_manager.setItems(dataManager);
@@ -148,6 +150,7 @@ public class AdminController {
         txt_managerInBuilding.setText(observedBuilding.getManager_id());
         lab_messageInBuilding.setText("");
     }
+
     /**
      * note 刷新所有表格
      */
@@ -321,7 +324,13 @@ public class AdminController {
      */
     @FXML
     public void but_resetPassword(ActionEvent actionEvent) {
+        boolean flag = biz.resetPasswordAdmin(txt_accountInPassWord.getText(), TranMD5.md5(txt_passwordInPassword.getText()));
+        if(flag) {
+            lab_messageInPassword.setText("修改成功");
+            lab_messageInPassword.setTextFill(Color.GREEN);
+        } else {
+            lab_messageInPassword.setText("修改失败");
+            lab_messageInPassword.setTextFill(Color.RED);
+        }
     }
-
-
 }

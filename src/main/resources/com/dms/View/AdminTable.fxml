@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -12,19 +11,19 @@
           <items>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                  <children>
-                     <VBox prefHeight="800.0" prefWidth="300.0" spacing="30.0">
+                     <VBox prefHeight="800.0" prefWidth="300.0" spacing="30.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x04.png');">
                          <padding>
                              <Insets top="40.0" />
                          </padding>
                         <children>
                             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
                                <children>
-                                   <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="60.0" text="您好！">
+                                   <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="60.0" text="您好！" textFill="WHITE">
                                        <font>
                                            <Font size="14.0" />
                                        </font>
                                    </Label>
-                                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="120.0" text="admin">
+                                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="120.0" text="Admin" textFill="WHITE">
                                        <font>
                                            <Font name="System Bold" size="18.0" />
                                        </font>
@@ -36,8 +35,8 @@
                             </HBox>
                             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
                                <children>
-                                   <Button mnemonicParsing="false" onAction="#but_reset" prefHeight="40.0" prefWidth="70.0" text="修改密码" />
-                                   <Button mnemonicParsing="false" onAction="#but_refreshAll" prefHeight="40.0" prefWidth="70.0" text="刷新信息">
+                                   <Button mnemonicParsing="false" onAction="#but_reset" prefHeight="40.0" prefWidth="70.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="修改密码" />
+                                   <Button mnemonicParsing="false" onAction="#but_refreshAll" prefHeight="40.0" prefWidth="70.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="刷新信息">
                                        <HBox.margin>
                                            <Insets />
                                        </HBox.margin>
@@ -46,7 +45,7 @@
                             </HBox>
                             <HBox prefHeight="70.0" prefWidth="200.0">
                                <children>
-                                   <Button mnemonicParsing="false" onAction="#but_manager" prefHeight="70.0" prefWidth="170.0" text="宿管信息">
+                                   <Button mnemonicParsing="false" onAction="#but_manager" prefHeight="70.0" prefWidth="170.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x06.png');" text="宿管信息">
                                        <HBox.margin>
                                            <Insets left="65.0" />
                                        </HBox.margin>
@@ -55,7 +54,7 @@
                             </HBox>
                             <HBox prefHeight="70.0" prefWidth="200.0">
                                <children>
-                                   <Button mnemonicParsing="false" onAction="#but_building" prefHeight="70.0" prefWidth="170.0" text="楼宇信息">
+                                   <Button mnemonicParsing="false" onAction="#but_building" prefHeight="70.0" prefWidth="170.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x06.png');" text="楼宇信息">
                                        <HBox.margin>
                                            <Insets left="65.0" />
                                        </HBox.margin>
@@ -64,7 +63,7 @@
                             </HBox>
                             <HBox prefHeight="70.0" prefWidth="200.0">
                                <children>
-                                   <Button mnemonicParsing="false" onAction="#but_logout" prefHeight="70.0" prefWidth="170.0" text="退出系统">
+                                   <Button mnemonicParsing="false" onAction="#but_logout" prefHeight="70.0" prefWidth="170.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x06.png');" text="退出系统">
                                        <HBox.margin>
                                            <Insets left="65.0" />
                                        </HBox.margin>
@@ -83,26 +82,7 @@
                                <content>
                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                       <children>
-                                          <VBox prefHeight="771.0" prefWidth="895.0">
-                                             <children>
-                                                 <Label alignment="CENTER" prefHeight="184.0" prefWidth="896.0" text="欢迎使用宿舍管理系统">
-                                                     <font>
-                                                         <Font size="48.0" />
-                                                     </font>
-                                                     <VBox.margin>
-                                                         <Insets top="70.0" />
-                                                     </VBox.margin>
-                                                 </Label>
-                                                 <ImageView fitHeight="477.0" fitWidth="504.0" pickOnBounds="true" preserveRatio="true">
-                                                     <VBox.margin>
-                                                         <Insets top="100.0" />
-                                                     </VBox.margin>
-                                                    <image>
-                                                        <Image url="@../../../img/0x01.png" />
-                                                    </image>
-                                                 </ImageView>
-                                             </children>
-                                          </VBox>
+                                          <VBox prefHeight="771.0" prefWidth="895.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/rightOfMain1.png');" />
                                       </children>
                                    </AnchorPane>
                                </content>
@@ -111,7 +91,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <VBox alignment="TOP_CENTER" prefHeight="770.0" prefWidth="895.0">
+                                    <VBox alignment="TOP_CENTER" prefHeight="770.0" prefWidth="895.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/rightOfMain.png');">
                                        <children>
                                           <TableView fx:id="table_manager" prefHeight="568.0" prefWidth="835.0">
                                             <columns>
@@ -124,7 +104,7 @@
                                           </TableView>
                                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                                <children>
-                                                   <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_jumpToManager" prefHeight="40.0" prefWidth="60.0" text="查看">
+                                                   <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_jumpToManager" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="查看">
                                                        <HBox.margin>
                                                            <Insets left="120.0" right="20.0" />
                                                        </HBox.margin>
@@ -144,7 +124,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <VBox alignment="TOP_CENTER" prefHeight="770.0" prefWidth="895.0">
+                                    <VBox alignment="TOP_CENTER" prefHeight="770.0" prefWidth="895.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/rightOfMain.png');">
                                        <children>
                                           <TableView fx:id="table_building" prefHeight="477.0" prefWidth="835.0">
                                             <columns>
@@ -157,7 +137,7 @@
                                           </TableView>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_jumpToBuilding" prefHeight="40.0" prefWidth="60.0" text="查看">
+                                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_jumpToBuilding" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="查看">
                                                    <HBox.margin>
                                                       <Insets left="120.0" right="20.0" />
                                                    </HBox.margin>
@@ -178,30 +158,42 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="770.0" prefWidth="895.0" spacing="30.0">
+                                    <VBox alignment="CENTER" prefHeight="770.0" prefWidth="895.0" spacing="30.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/rightOfMain.png');">
                                        <children>
                                           <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
                                              <children>
-                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="60.0" text="楼号：" />
-                                                <TextField fx:id="txt_id_inBuilding" prefHeight="40.0" prefWidth="200.0" />
+                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="楼号：" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font></Label>
+                                                <TextField fx:id="txt_id_inBuilding" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER" layoutX="10.0" layoutY="375.0" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
                                              <children>
-                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="60.0" text="楼名：" />
-                                                <TextField fx:id="txt_nameInBuilding" prefHeight="40.0" prefWidth="200.0" />
+                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="楼名：" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font></Label>
+                                                <TextField fx:id="txt_nameInBuilding" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER" layoutX="10.0" layoutY="395.0" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
                                              <children>
-                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="60.0" text="位置：" />
-                                                <TextField fx:id="txt_addressInBuilding" prefHeight="40.0" prefWidth="200.0" />
+                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="位置：" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font></Label>
+                                                <TextField fx:id="txt_addressInBuilding" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER" layoutX="10.0" layoutY="415.0" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
                                              <children>
-                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="60.0" text="管理员：" />
-                                                <TextField fx:id="txt_managerInBuilding" prefHeight="40.0" prefWidth="200.0" />
+                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="管理员：" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font></Label>
+                                                <TextField fx:id="txt_managerInBuilding" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
@@ -210,12 +202,12 @@
                                              </children></HBox>
                                           <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
                                              <children>
-                                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_editInBuilding" prefHeight="40.0" prefWidth="60.0" text="修改">
+                                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_editInBuilding" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="修改">
                                                    <HBox.margin>
                                                       <Insets />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button alignment="CENTER" layoutX="428.0" layoutY="40.0" mnemonicParsing="false" onAction="#but_toSaveInBuilding" prefHeight="40.0" prefWidth="60.0" text="保存" />
+                                                <Button alignment="CENTER" layoutX="428.0" layoutY="40.0" mnemonicParsing="false" onAction="#but_toSaveInBuilding" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="保存" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -228,14 +220,17 @@
                                 <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                         <children>
-                                            <VBox prefHeight="770.0" prefWidth="895.0">
+                                            <VBox prefHeight="770.0" prefWidth="895.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/rightOfMain.png');">
                                                 <padding>
                                                     <Insets bottom="30.0" left="30.0" right="30.0" top="220.0" />
                                                 </padding>
                                                 <children>
                                           <HBox alignment="CENTER" layoutX="40.0" layoutY="210.0" prefHeight="40.0" prefWidth="200.0" spacing="50.0">
                                              <children>
-                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="120.0" text="请输入账号" />
+                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="120.0" text="请输入账号" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font></Label>
                                                 <PasswordField fx:id="txt_accountInPassWord" prefHeight="40.0" prefWidth="200.0">
                                                    <HBox.margin>
                                                       <Insets />
@@ -251,7 +246,10 @@
                                                             <Insets bottom="30.0" />
                                                         </VBox.margin>
                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="120.0" text="请输入新密码" />
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="120.0" text="请输入新密码" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font></Label>
                                                             <PasswordField fx:id="txt_passwordInPassword" prefHeight="40.0" prefWidth="200.0">
                                                                 <HBox.margin>
                                                                     <Insets />
@@ -269,7 +267,7 @@
                                                             <Insets />
                                                         </VBox.margin>
                                                         <children>
-                                                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_resetPassword" prefHeight="40.0" prefWidth="80.0" text="修改密码" />
+                                                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_resetPassword" prefHeight="40.0" prefWidth="80.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="修改密码" />
                                                         </children>
                                                     </HBox>
                                                 </children>

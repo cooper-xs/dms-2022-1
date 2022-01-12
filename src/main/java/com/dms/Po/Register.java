@@ -6,6 +6,15 @@ public class Register {
     private int identity;
     private String account, password;
 
+    public Register() {
+    }
+
+    public Register(int identity, String account, String password) {
+        this.identity = identity;
+        this.account = account;
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "register{" +

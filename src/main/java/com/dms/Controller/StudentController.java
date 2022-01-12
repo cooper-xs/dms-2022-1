@@ -261,7 +261,7 @@ public class StudentController {
 
     // note 个人信息
     /**
-     * note 显示个人信息tab
+     * note 显示个人信息tab_person
      * @param actionEvent
      */
     @FXML

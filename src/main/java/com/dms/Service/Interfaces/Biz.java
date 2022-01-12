@@ -35,6 +35,7 @@ public interface Biz {
     List<Log> selectLogByStudent_id(String student_id);
     // note 查找宿舍缴费信息
     List<Log> selectLogByBuilding_idAndDorm_id(String building_id, String dorm_id);
+    // note 查找注册信息
     // x2 更新
     // note 更新学生信息
     boolean updateStudentInfo(String student_id, Student student);
@@ -55,10 +56,6 @@ public interface Biz {
     boolean saveMoney(String id, String building_id, String dorm_id, double value) throws InputValueException;
     // note 登录
     int Login(String account, String password) throws NoSuchAccountException, PasswordWrongException, AccountInputEmptyException, PasswordInputEmptyException;
-
-
-    // note 展示学生个人信息
-    void studentShowOnAll(Student student) throws NoSuchAccountException; // todo delete
-    // note 展示管理员个人信息
-    void managerShowOnAll(Manager manager); // todo delete
+    // note 直接修改密码
+    boolean resetPasswordAdmin(String account, String password);
 }

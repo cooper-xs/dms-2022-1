@@ -46,6 +46,11 @@ public class BizImpl implements Biz {
         return identity;
     }
 
+    @Override
+    public boolean resetPasswordAdmin(String account, String password) {
+        return registerDao.updateRegister(account, password) > 0;
+    }
+
     /**
      * note 通过学生账号找到学生
      */
@@ -130,23 +135,8 @@ public class BizImpl implements Biz {
         return managerDao.selectById(manager_id);
     }
 
-    /**
-     * 展示学生信息（在所有table上）
-     */
-    public void studentShowOnAll(Student student) {
-        System.out.println(student);
-    }
-
-    /**
-     * 展示管理员信息（在所有table上）
-     */
     @Override
-    public void managerShowOnAll(Manager manager) {
-        System.out.println(manager);
-    }
-
-    @Override
-    public boolean resetPassword(String account, String passwordBefore, String passwordNew, String passwordRepeat) throws PasswordWrongException, PasswordNotSameException, PasswordSameWithBeforeException {
+    public boolean resetPassword(String account, String passwordBefore, String passwordNew, String passwordRepeat)  throws PasswordWrongException, PasswordNotSameException, PasswordSameWithBeforeException {
         Register register = registerDao.selectById(account);
 
         if(!register.getPassword().equals(passwordBefore)) {

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -24,6 +25,7 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws Exception {
         this.primaryStage = stage;
         this.primaryStage.setTitle("宿舍管理系统");
+        stage.getIcons().add(new Image("file:src/main/resources/img/dms0x00.png"));
         initLogin(); // 打开窗口
     }
 
@@ -54,12 +56,16 @@ public class MainApplication extends Application {
         stage.setTitle("学生界面");
         stage.setResizable(false); // 不可调整大小
         stage.initOwner(primaryStage); // stage 的拥有者是 primaryStage
+        stage.getIcons().add(new Image("file:src/main/resources/img/dms0x00.png"));
+
+
+
+
         stage.setScene(scene);
         // x5.显示
         stage.showAndWait();
     }
 
-    // todo
     public void initManageTable() throws IOException {
         // x1.新建fxmlLoad,设置fxml路径
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ManagerTable.fxml"));
@@ -72,12 +78,15 @@ public class MainApplication extends Application {
         stage.setTitle("宿舍管理员界面");
         stage.setResizable(false); // 不可调整大小
         stage.initOwner(primaryStage); // stage 的拥有者是 primaryStage
+        stage.getIcons().add(new Image("file:src/main/resources/img/dms0x00.png"));
+
+
+
         stage.setScene(scene);
         // x5.显示
         stage.showAndWait();
     }
 
-    // todo
     public void initAdminTable() throws IOException {
         // x1.新建fxmlLoad,设置fxml路径
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AdminTable.fxml"));
@@ -93,6 +102,11 @@ public class MainApplication extends Application {
         stage.setTitle("admin界面");
         stage.setResizable(false); // 不可调整大小
         stage.initOwner(primaryStage); // stage 的拥有者是 primaryStage
+        stage.getIcons().add(new Image("file:src/main/resources/img/dms0x00.png"));
+
+
+
+
         stage.setScene(scene);
         // x5.显示
         stage.show();
