@@ -79,6 +79,13 @@ public class DormDaoImpl extends BaseDao implements DormDao {
         return res;
     }
 
+    /**
+     * 根据楼宇号与宿舍号精确修改宿舍信息
+     * @param building_id
+     * @param dorm_id
+     * @param dorm
+     * @return
+     */
     @Override
     public int updateDorm(String building_id, String dorm_id, Dorm dorm) {
         int res = 0;

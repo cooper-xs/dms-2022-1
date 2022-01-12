@@ -73,7 +73,7 @@
                         </HBox>
                             <HBox prefHeight="70.0" prefWidth="200.0">
                                <children>
-                                   <Button mnemonicParsing="false" onAction="#but_logout" prefHeight="70.0" prefWidth="170.0" text="注销">
+                                   <Button mnemonicParsing="false" onAction="#but_logout" prefHeight="70.0" prefWidth="170.0" text="退出系统">
                                        <HBox.margin>
                                            <Insets left="65.0" />
                                        </HBox.margin>
@@ -261,7 +261,7 @@
                                                                        <Insets left="120.0" right="20.0" />
                                                                    </HBox.margin>
                                                                </Button>
-                                                               <Label fx:id="lab_messageToSelect" alignment="CENTER" prefHeight="40.0" prefWidth="100.0" text="请选中一条数据" />
+                                                               <Label fx:id="lab_messageToSelectInBuilding" alignment="CENTER" prefHeight="40.0" prefWidth="100.0" text="请选中一条数据" />
                                                            </children>
                                                         </HBox>
                                                     </children>
@@ -350,7 +350,7 @@
                                                                 <Insets left="120.0" right="20.0" />
                                                             </HBox.margin>
                                                         </Button>
-                                                        <Label fx:id="lab_messageToSelect" alignment="CENTER" prefHeight="40.0" prefWidth="100.0" text="请选中一条数据" />
+                                                        <Label fx:id="lab_messageToSelectInDorm" alignment="CENTER" prefHeight="40.0" prefWidth="100.0" text="请选中一条数据" />
                                                     </children>
                                                  </HBox>
                                              </children>

@@ -199,6 +199,7 @@ public class StudentController {
             }
         }
     }
+
     /**
      * 初始化
      */
@@ -243,7 +244,6 @@ public class StudentController {
         col_major.setCellValueFactory(new PropertyValueFactory<BeanPerson, String>("major"));
         col_class.setCellValueFactory(new PropertyValueFactory<BeanPerson, String>("classes"));
         col_state.setCellValueFactory(new PropertyValueFactory<BeanPerson, String>("state"));
-//        col_operate.setCellValueFactory(new PropertyValueFactory<BeanPerson, Boolean>("operate")); // 不必设置
         // x2 日志
         table_log.setItems(dataInLog);
         col_sign_NO.setCellValueFactory(new PropertyValueFactory<BeanLog, Integer>("NO"));

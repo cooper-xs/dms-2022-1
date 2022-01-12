@@ -47,13 +47,19 @@ public class BizImpl implements Biz {
     }
 
     /**
-     * 直接找到学生
+     * note 通过学生账号找到学生
      */
     @Override
     public Student selectStudentById(String student_id) {
         return studentDao.selectById(student_id);
     }
 
+    /**
+     * 根据楼宇号与宿舍号精确查找宿舍内学生
+     * @param building_id
+     * @param dorm_id
+     * @return
+     */
     @Override
     public List<Student> selectStudentByBuilding_idAndDorm_id(String building_id, String dorm_id) {
         List<Student> studentList = studentDao.selectAll();
@@ -79,10 +85,28 @@ public class BizImpl implements Biz {
     }
 
     @Override
+    public List<Manager> selectAllManager() {
+        return managerDao.selectAll();
+    }
+
+    /**
+     * 根据id将数据库的信息更新为新的student
+     * @param student_id
+     * @param student
+     * @return
+     */
+    @Override
     public boolean updateStudentInfo(String student_id, Student student) {
         return studentDao.updateStudent(student_id, student) > 0;
     }
 
+    /**
+     * 更新宿舍信息
+     * @param building_id
+     * @param dorm_id
+     * @param dorm
+     * @return
+     */
     @Override
     public boolean updateDormInfo(String building_id, String dorm_id, Dorm dorm) {
         return dormDao.updateDorm(building_id, dorm_id, dorm) > 0;
@@ -91,6 +115,11 @@ public class BizImpl implements Biz {
     @Override
     public boolean updateManagerInfo(String manager_id, Manager manager) {
         return managerDao.updateManager(manager_id, manager) > 0;
+    }
+
+    @Override
+    public boolean updateBuildingInfo(String building_id, Building building) {
+        return buildingDao.updateBuilding(building_id, building) > 0;
     }
 
     /**
@@ -145,7 +174,10 @@ public class BizImpl implements Biz {
     }
 
     /**
-     * 展示楼宇信息（在学生table上）
+     * 根据楼宇号查找楼宇
+     * @param building_id
+     * @return
+     * @throws NoSuchAccountException
      */
     @Override
     public Building selectBuildingByBuilding_id(String building_id) throws NoSuchAccountException {
@@ -153,26 +185,6 @@ public class BizImpl implements Biz {
         if(building == null) {
             throw new NoSuchAccountException(building_id);
         }
-//        System.out.println(building);
-//        int cnt = 0;
-//        List<Student> studentList = studentDao.selectAll();
-//        for(Student student0 : studentList) {
-//            if(student0.getBuilding_id().equals(building_id)) {
-//                cnt ++;
-//            }
-//        }
-//        System.out.println("与你住在一栋楼的还有：" + cnt + " 位同学");
-//        List<Manager> managerList = managerDao.selectAll();
-//        Manager manager = null;
-//        for(Manager manager0 : managerList) {
-//            if(manager0.getManager_id().equals(building.getManager_id())) {
-//                manager = manager0;
-//                break;
-//            }
-//        }
-//        if(manager != null) {
-//            System.out.println("你的宿管阿姨是：" + manager.getName() + " 联系方式：" + manager.getContact());
-//        }
         return building;
     }
 
@@ -212,6 +224,11 @@ public class BizImpl implements Biz {
             }
         }
         return buildingList;
+    }
+
+    @Override
+    public List<Building> selectAllBuilding() {
+        return buildingDao.selectAll();
     }
 
     /**

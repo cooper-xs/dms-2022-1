@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dms.Controller.AdminController">
+   <children>
+       <SplitPane dividerPositions="0.25" prefHeight="800.0" prefWidth="1200.0">
+          <items>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                 <children>
+                     <VBox prefHeight="800.0" prefWidth="300.0" spacing="30.0">
+                         <padding>
+                             <Insets top="40.0" />
+                         </padding>
+                        <children>
+                            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                               <children>
+                                   <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="60.0" text="您好！">
+                                       <font>
+                                           <Font size="14.0" />
+                                       </font>
+                                   </Label>
+                                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="120.0" text="admin">
+                                       <font>
+                                           <Font name="System Bold" size="18.0" />
+                                       </font>
+                                       <HBox.margin>
+                                           <Insets />
+                                       </HBox.margin>
+                                   </Label>
+                               </children>
+                            </HBox>
+                            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
+                               <children>
+                                   <Button mnemonicParsing="false" onAction="#but_reset" prefHeight="40.0" prefWidth="70.0" text="修改密码" />
+                                   <Button mnemonicParsing="false" onAction="#but_refreshAll" prefHeight="40.0" prefWidth="70.0" text="刷新信息">
+                                       <HBox.margin>
+                                           <Insets />
+                                       </HBox.margin>
+                                   </Button>
+                               </children>
+                            </HBox>
+                            <HBox prefHeight="70.0" prefWidth="200.0">
+                               <children>
+                                   <Button mnemonicParsing="false" onAction="#but_manager" prefHeight="70.0" prefWidth="170.0" text="宿管信息">
+                                       <HBox.margin>
+                                           <Insets left="65.0" />
+                                       </HBox.margin>
+                                   </Button>
+                               </children>
+                            </HBox>
+                            <HBox prefHeight="70.0" prefWidth="200.0">
+                               <children>
+                                   <Button mnemonicParsing="false" onAction="#but_building" prefHeight="70.0" prefWidth="170.0" text="楼宇信息">
+                                       <HBox.margin>
+                                           <Insets left="65.0" />
+                                       </HBox.margin>
+                                   </Button>
+                               </children>
+                            </HBox>
+                            <HBox prefHeight="70.0" prefWidth="200.0">
+                               <children>
+                                   <Button mnemonicParsing="false" onAction="#but_logout" prefHeight="70.0" prefWidth="170.0" text="退出系统">
+                                       <HBox.margin>
+                                           <Insets left="65.0" />
+                                       </HBox.margin>
+                                   </Button>
+                               </children>
+                            </HBox>
+                        </children>
+                     </VBox>
+                 </children>
+              </AnchorPane>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                 <children>
+                     <TabPane fx:id="tabs_father" prefHeight="800.0" prefWidth="895.0" tabClosingPolicy="UNAVAILABLE">
+                        <tabs>
+                            <Tab fx:id="tab_welcome" text="欢迎界面">
+                               <content>
+                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                      <children>
+                                          <VBox prefHeight="771.0" prefWidth="895.0">
+                                             <children>
+                                                 <Label alignment="CENTER" prefHeight="184.0" prefWidth="896.0" text="欢迎使用宿舍管理系统">
+                                                     <font>
+                                                         <Font size="48.0" />
+                                                     </font>
+                                                     <VBox.margin>
+                                                         <Insets top="70.0" />
+                                                     </VBox.margin>
+                                                 </Label>
+                                                 <ImageView fitHeight="477.0" fitWidth="504.0" pickOnBounds="true" preserveRatio="true">
+                                                     <VBox.margin>
+                                                         <Insets top="100.0" />
+                                                     </VBox.margin>
+                                                    <image>
+                                                        <Image url="@../../../img/0x01.png" />
+                                                    </image>
+                                                 </ImageView>
+                                             </children>
+                                          </VBox>
+                                      </children>
+                                   </AnchorPane>
+                               </content>
+                            </Tab>
+                        <Tab fx:id="tab_managerMessage" text="宿管管理">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="770.0" prefWidth="895.0">
+                                       <children>
+                                          <TableView fx:id="table_manager" prefHeight="568.0" prefWidth="835.0">
+                                            <columns>
+                                              <TableColumn fx:id="col_NOInManager" prefWidth="75.0" text="序号" />
+                                              <TableColumn fx:id="col_nameInManager" prefWidth="110.0" text="姓名" />
+                                                <TableColumn fx:id="col_idInManager" prefWidth="110.0" text="工号" />
+                                                <TableColumn fx:id="col_connectInManager" prefWidth="110.0" text="联系方式" />
+                                                <TableColumn fx:id="col_buildingInManager" prefWidth="493.0" text="管理楼宇" />
+                                            </columns>
+                                          </TableView>
+                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                               <children>
+                                                   <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_jumpToManager" prefHeight="40.0" prefWidth="60.0" text="查看">
+                                                       <HBox.margin>
+                                                           <Insets left="120.0" right="20.0" />
+                                                       </HBox.margin>
+                                                   </Button>
+                                                   <Label fx:id="lab_messageInManager" alignment="CENTER" prefHeight="40.0" prefWidth="100.0" text="请选中一条数据" />
+                                               </children>
+                                           </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children></AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab fx:id="tab_buildingManager" text="楼宇管理">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="770.0" prefWidth="895.0">
+                                       <children>
+                                          <TableView fx:id="table_building" prefHeight="477.0" prefWidth="835.0">
+                                            <columns>
+                                              <TableColumn fx:id="col_NOInBuilding" prefWidth="100.0" text="序号" />
+                                              <TableColumn fx:id="col_numberInBuilding" prefWidth="130.0" text="楼号" />
+                                                <TableColumn fx:id="col_nameInBuilding" prefWidth="200.0" text="楼名" />
+                                                <TableColumn fx:id="col_addressInBuilding" prefWidth="260.0" text="地址" />
+                                                <TableColumn fx:id="col_managerInBuilding" prefWidth="145.0" text="管理员" />
+                                            </columns>
+                                          </TableView>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_jumpToBuilding" prefHeight="40.0" prefWidth="60.0" text="查看">
+                                                   <HBox.margin>
+                                                      <Insets left="120.0" right="20.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Label fx:id="lab_messageInBuildingManager" alignment="CENTER" prefHeight="40.0" prefWidth="100.0" text="请选中一条数据" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="30.0" left="30.0" right="30.0" top="60.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab fx:id="tab_buildingMessage" text="楼宇信息">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="770.0" prefWidth="895.0" spacing="30.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="60.0" text="楼号：" />
+                                                <TextField fx:id="txt_id_inBuilding" prefHeight="40.0" prefWidth="200.0" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="375.0" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="60.0" text="楼名：" />
+                                                <TextField fx:id="txt_nameInBuilding" prefHeight="40.0" prefWidth="200.0" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="395.0" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="60.0" text="位置：" />
+                                                <TextField fx:id="txt_addressInBuilding" prefHeight="40.0" prefWidth="200.0" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="415.0" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="60.0" text="管理员：" />
+                                                <TextField fx:id="txt_managerInBuilding" prefHeight="40.0" prefWidth="200.0" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="lab_messageInBuilding" alignment="CENTER" prefHeight="40.0" prefWidth="100.0" />
+                                             </children></HBox>
+                                          <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
+                                             <children>
+                                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_editInBuilding" prefHeight="40.0" prefWidth="60.0" text="修改">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Button alignment="CENTER" layoutX="428.0" layoutY="40.0" mnemonicParsing="false" onAction="#but_toSaveInBuilding" prefHeight="40.0" prefWidth="60.0" text="保存" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                            <Tab fx:id="tab_resetPassword" text="修改密码">
+                                <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                        <children>
+                                            <VBox prefHeight="770.0" prefWidth="895.0">
+                                                <padding>
+                                                    <Insets bottom="30.0" left="30.0" right="30.0" top="220.0" />
+                                                </padding>
+                                                <children>
+                                          <HBox alignment="CENTER" layoutX="40.0" layoutY="210.0" prefHeight="40.0" prefWidth="200.0" spacing="50.0">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="120.0" text="请输入账号" />
+                                                <PasswordField fx:id="txt_accountInPassWord" prefHeight="40.0" prefWidth="200.0">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </PasswordField>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="30.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="200.0" spacing="50.0">
+                                                        <VBox.margin>
+                                                            <Insets bottom="30.0" />
+                                                        </VBox.margin>
+                                                        <children>
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="120.0" text="请输入新密码" />
+                                                            <PasswordField fx:id="txt_passwordInPassword" prefHeight="40.0" prefWidth="200.0">
+                                                                <HBox.margin>
+                                                                    <Insets />
+                                                                </HBox.margin>
+                                                            </PasswordField>
+                                                        </children>
+                                                    </HBox>
+                                                    <Label fx:id="lab_messageInPassword" alignment="CENTER" prefHeight="55.0" prefWidth="835.0">
+                                                        <VBox.margin>
+                                                            <Insets />
+                                                        </VBox.margin>
+                                                    </Label>
+                                                    <HBox alignment="CENTER" prefHeight="40.0" prefWidth="835.0">
+                                                        <VBox.margin>
+                                                            <Insets />
+                                                        </VBox.margin>
+                                                        <children>
+                                                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_resetPassword" prefHeight="40.0" prefWidth="80.0" text="修改密码" />
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </AnchorPane>
+                                </content>
+                            </Tab>
+                        </tabs>
+                     </TabPane>
+                 </children>
+              </AnchorPane>
+          </items>
+       </SplitPane>
+   </children>
+</AnchorPane>

@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BuildingDaoImpl extends BaseDao implements BuildingDao {
+    /**
+     * 根据id查询楼宇
+     * @param building_id
+     * @return
+     */
     @Override
     public Building selectById(String building_id) {
         Building building = null;

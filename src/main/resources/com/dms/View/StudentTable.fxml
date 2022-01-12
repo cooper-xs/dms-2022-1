@@ -72,7 +72,7 @@
                     </Button>
                 </HBox>
                 <HBox prefHeight="70.0" prefWidth="200.0">
-                    <Button mnemonicParsing="false" onAction="#but_logout" prefHeight="70.0" prefWidth="170.0" text="注销">
+                    <Button mnemonicParsing="false" onAction="#but_logout" prefHeight="70.0" prefWidth="170.0" text="退出系统">
                         <HBox.margin>
                             <Insets left="65.0" />
                         </HBox.margin>

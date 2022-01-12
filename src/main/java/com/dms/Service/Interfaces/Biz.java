@@ -13,6 +13,8 @@ public interface Biz {
     List<Student> selectStudentByBuilding_idAndDorm_id(String building_id, String dorm_id);
     // note 查找楼宇内学生
     List<Student> selectStudentByBuilding_id(String building_id);
+    // note 查找所有管理员
+    List<Manager> selectAllManager();
     // note 查找管理员
     Manager selectManagerById(String manager_id);
     // note 查找宿舍
@@ -25,6 +27,8 @@ public interface Biz {
     Building selectBuildingByBuilding_id(String building_id) throws NoSuchAccountException;
     // note 查找所管理楼宇
     List<Building> selectBuildingsByManager_id(String manager_id);
+    // note 查找所有楼宇
+    List<Building> selectAllBuilding();
     // note 查找日志信息
     List<Log> selectAllLog();
     // note 查找个人签到信息
@@ -38,6 +42,8 @@ public interface Biz {
     boolean updateDormInfo(String building_id, String dorm_id, Dorm dorm);
     // note 更新宿管个人信息
     boolean updateManagerInfo(String manager_id, Manager manager);
+    // note 更新楼宇信息
+    boolean updateBuildingInfo(String building_id, Building building);
     // x3 操作
     // note 修改密码
     boolean resetPassword(String account, String passwordBefore, String passwordNew, String passwordRepeat) throws PasswordWrongException, PasswordNotSameException, PasswordSameWithBeforeException;

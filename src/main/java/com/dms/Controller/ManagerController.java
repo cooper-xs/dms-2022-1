@@ -24,7 +24,7 @@ public class ManagerController {
     private Manager manager;
     private Student observedStudent;
     private Dorm observedDorm;
-    private List<Log> observedLogs = new ArrayList<>();
+    private final List<Log> observedLogs = new ArrayList<>();
     private final ObservableList<BeanDorm> dataInBuilding = FXCollections.observableArrayList();
     private final ObservableList<BeanPerson> dataInDorm = FXCollections.observableArrayList();
     private final ObservableList<BeanLog> dataInLog = FXCollections.observableArrayList();
@@ -79,7 +79,7 @@ public class ManagerController {
     @FXML
     public TableColumn<BeanDorm, String> col_depositInBuilding;
     @FXML
-    public Label lab_messageToSelect;
+    public Label lab_messageToSelectInBuilding;
     @FXML
     public TextField txt_building_idInBuilding;
     @FXML
@@ -93,6 +93,8 @@ public class ManagerController {
     public Label lab_messageInDorm;
     @FXML
     public TextField txt_dormMoney;
+    @FXML
+    public Label lab_messageToSelectInDorm;
     @FXML
     public TableView<BeanPerson> table_dorm;
     @FXML
@@ -290,7 +292,8 @@ public class ManagerController {
         lab_message_password.setText("");
         lab_messageInStudent.setText("");
         lab_messageInBuilding.setText("");
-        lab_messageToSelect.setTextFill(Color.BLACK);
+        lab_messageToSelectInBuilding.setTextFill(Color.BLACK);
+        lab_messageToSelectInDorm.setTextFill(Color.BLACK);
         // note 设置管理员个人信息tab
         List<Building> buildingChargeBySession = biz.selectBuildingsByManager_id(manager.getManager_id());
         String buildingNameList = "";
@@ -400,6 +403,7 @@ public class ManagerController {
      */
     @FXML
     public void but_building(ActionEvent actionEvent) {
+        // note 如果父tab已经有该子tab，聚焦；否则，添加到父tab（下同）
         if(tabs_father.getTabs().contains(tab_building)) {
             SingleSelectionModel<Tab> selectionModel = tabs_father.getSelectionModel();
             tabs_father.selectionModelProperty().set(selectionModel);
@@ -627,7 +631,7 @@ public class ManagerController {
             lab_messageInBuilding.setText("未找到宿舍");
             lab_messageInBuilding.setTextFill(Color.RED);
         } catch (Exception e) {
-            lab_messageToSelect.setTextFill(Color.RED);
+            lab_messageToSelectInBuilding.setTextFill(Color.RED);
         }
     }
 
@@ -649,7 +653,7 @@ public class ManagerController {
             }
             tabs_father.getSelectionModel().select(tab_student);
         } catch (Exception e) {
-            lab_messageToSelect.setTextFill(Color.RED);
+            lab_messageToSelectInDorm.setTextFill(Color.RED);
         }
     }
 

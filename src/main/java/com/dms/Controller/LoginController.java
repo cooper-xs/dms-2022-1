@@ -31,6 +31,7 @@ public class LoginController {
 
     public static Biz biz = new BizImpl();
     public int res;
+
     @FXML
     public Label lab_message;
     @FXML
@@ -50,14 +51,12 @@ public class LoginController {
             lab_message.setText("登录成功");
             lab_message.setTextFill(Color.GREEN);
             Session.setNumber(id_accountIn.getText());
+            this.LoginStage.close();
             if(res == 1) {
-                this.LoginStage.close();
                 new MainApplication().initStudentTable();
             } else if(res == 2) {
-                this.LoginStage.close();
                 new MainApplication().initManageTable();
             } else if(res == 3) {
-                this.LoginStage.close();
                 new MainApplication().initAdminTable();
             }
         } catch (NoSuchAccountException e) {
@@ -73,6 +72,5 @@ public class LoginController {
             lab_message.setText("请输入密码");
             lab_message.setTextFill(Color.RED);
         }
-        // todo 跳转res
     }
 }

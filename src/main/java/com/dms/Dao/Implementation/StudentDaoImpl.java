@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDaoImpl extends BaseDao implements StudentDao {
+    /**
+     * 通过id查找学生
+     * @param student_id
+     * @return 查到的学生
+     */
     @Override
     public Student selectById(String student_id) {
         Student student = null;
@@ -39,6 +44,10 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
         return student;
     }
 
+    /**
+     * 查找所有学生
+     * @return
+     */
     @Override
     public List<Student> selectAll() {
         List<Student> studentList = new ArrayList<>();
@@ -95,6 +104,12 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
         return res;
     }
 
+    /**
+     * 根据学生id修改信息为student
+     * @param student_id
+     * @param student
+     * @return
+     */
     @Override
     public int updateStudent(String student_id, Student student) {
         int res = 0;
