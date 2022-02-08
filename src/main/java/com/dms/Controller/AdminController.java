@@ -87,9 +87,9 @@ public class AdminController {
     @FXML
     public Label lab_messageInBuilding;
     @FXML
-    public PasswordField txt_accountInPassWord;
+    public TextField txt_accountInPassWord;
     @FXML
-    public PasswordField txt_passwordInPassword;
+    public TextField txt_passwordInPassword;
     @FXML
     public Label lab_messageInPassword;
 
@@ -308,7 +308,7 @@ public class AdminController {
         updateBuilding();
         if(flag) {
             lab_messageInBuilding.setText("保存成功");
-            lab_messageInBuilding.setTextFill(Color.GREEN);
+            lab_messageInBuilding.setTextFill(Color.rgb(16,185,16));
         } else {
             lab_messageInBuilding.setText("保存失败");
             lab_messageInBuilding.setTextFill(Color.RED);
@@ -327,7 +327,7 @@ public class AdminController {
         boolean flag = biz.resetPasswordAdmin(txt_accountInPassWord.getText(), TranMD5.md5(txt_passwordInPassword.getText()));
         if(flag) {
             lab_messageInPassword.setText("修改成功");
-            lab_messageInPassword.setTextFill(Color.GREEN);
+            lab_messageInPassword.setTextFill(Color.rgb(16,185,16));
         } else {
             lab_messageInPassword.setText("修改失败");
             lab_messageInPassword.setTextFill(Color.RED);

@@ -10,7 +10,6 @@ import com.dms.Ex.PasswordInputEmptyException;
 import com.dms.Ex.PasswordWrongException;
 import com.dms.View.MainApplication;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -75,13 +74,10 @@ public class LoginController {
             }
         } catch (NoSuchAccountException e) {
             lab_message.setText("账户不存在");
-            lab_message.setTextFill(Color.RED);
         } catch (PasswordWrongException e) {
             lab_message.setText("密码错误");
-            lab_message.setTextFill(Color.RED);
         } catch (AccountInputEmptyException e) {
             lab_message.setText("请输入账号");
-            lab_message.setTextFill(Color.RED);
         } catch (PasswordInputEmptyException e) {
             lab_message.setText("请输入密码");
             lab_message.setTextFill(Color.RED);

@@ -15,7 +15,7 @@ public class DateUtil {
     public static String nowToDateTime() {
         String strDate;
         Date date = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         strDate = simpleDateFormat.format(date);
         return strDate;
     }
@@ -23,7 +23,7 @@ public class DateUtil {
     public static long stringToLong(String date) {
         long sec = 0;
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
             simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+0"));
             sec = simpleDateFormat.parse(date).getTime();
         } catch (ParseException e) {

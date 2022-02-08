@@ -32,7 +32,7 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `student`(`name`, `gender`, `birthday`, `contact`, `student_id`, `college`, `major`, `classes`, `building_id`, `dorm_id`, `bed_id`, `status`) VALUES ('张道陵', '男', '2001-06-15', '15137187183', '20120820441', '计算机科学与技术学院', '大数据', '数据2001', '8', '110', 4, 0);
-INSERT INTO `student`(`name`, `gender`, `birthday`, `contact`, `student_id`, `college`, `major`, `classes`, `building_id`, `dorm_id`, `bed_id`, `status`) VALUES ('舒子易', '男', '2000-1-1', '15517183871', '1', '计算机科学与技术学院', '软件工程', '软件2001', '11', '518', 1, 0);
+INSERT INTO `student`(`name`, `gender`, `birthday`, `contact`, `student_id`, `college`, `major`, `classes`, `building_id`, `dorm_id`, `bed_id`, `status`) VALUES ('吕洞宾', '男', '2000-1-1', '15517183871', '1', '计算机科学与技术学院', '软件工程', '软件2001', '11', '518', 1, 0);
 INSERT INTO `student`(`name`, `gender`, `birthday`, `contact`, `student_id`, `college`, `major`, `classes`, `building_id`, `dorm_id`, `bed_id`, `status`) VALUES ('王骑', '男', '1998-10-12', '15623126367', '19023102010', '电子信息工程学院', '光电与信息工程系', '光信1902', 'Y1', '220', 1, 0);
 INSERT INTO `student`(`name`, `gender`, `birthday`, `contact`, `student_id`, `college`, `major`, `classes`, `building_id`, `dorm_id`, `bed_id`, `status`) VALUES ('樱木花道', '男', '2000-07-01', '15152245359', '19110103024', '计算机科学与技术学院', '计算机科学与技术', '计科1903', '11', '518', 2, 0);
 INSERT INTO `student`(`name`, `gender`, `birthday`, `contact`, `student_id`, `college`, `major`, `classes`, `building_id`, `dorm_id`, `bed_id`, `status`) VALUES ('蒙武', '男', '1999-10-10', '15998786878', '19112819687', '计算机科学与技术学院', '软件工程', '软件1901', 'Y1', '220', 2, 0);
@@ -70,7 +70,7 @@ CREATE TABLE `manager` (
                            UNIQUE KEY `UNIQUE` (`contact`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `manager`(`name`, `manager_id`, `contact`) VALUES ('张大爷', '2', '15055556666');
+INSERT INTO `manager`(`name`, `manager_id`, `contact`) VALUES ('铁拐李', '2', '15055556666');
 INSERT INTO `manager`(`name`, `manager_id`, `contact`) VALUES ('李叔叔', '30110521341', '19899251656');
 INSERT INTO `manager`(`name`, `manager_id`, `contact`) VALUES ('王阿姨', '30120026375', '15059963163');
 INSERT INTO `manager`(`name`, `manager_id`, `contact`) VALUES ('居里夫人', '30130434321', '18232744123');
@@ -137,7 +137,7 @@ CREATE TABLE `dorm` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `dorm`(`name`, `building_id`, `dorm_id`, `bed_num`, `people_num`, `deposit`) VALUES ('百草园', '11', '518', 4, 4, 1000);
-INSERT INTO `dorm`(`name`, `building_id`, `dorm_id`, `bed_num`, `people_num`, `deposit`) VALUES ('三味书屋', '2', '330', 4, 3, 2000);
+INSERT INTO `dorm`(`name`, `building_id`, `dorm_id`, `bed_num`, `people_num`, `deposit`) VALUES ('三味书屋', '2', '330', 4, 4, 2000);
 INSERT INTO `dorm`(`name`, `building_id`, `dorm_id`, `bed_num`, `people_num`, `deposit`) VALUES ('幸福屋', 'Y1', '220', 6, 6, 2350);
 INSERT INTO `dorm`(`name`, `building_id`, `dorm_id`, `bed_num`, `people_num`, `deposit`) VALUES ('菩提树屋', '6', '523', 4, 4, 1200);
 INSERT INTO `dorm`(`name`, `building_id`, `dorm_id`, `bed_num`, `people_num`, `deposit`) VALUES ('凌霄宝殿', '8', '110', 6, 6, 1500);
@@ -180,7 +180,16 @@ CREATE TABLE `log` (
                        PRIMARY KEY (`log_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '1', 1, '11', '518', 301, '2022-01-10 03:38:00');
-INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '1', 2, NULL, NULL, NULL, '2022-01-10 10:07:08');
-INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '1', 3, NULL, NULL, NULL, '2022-01-10 10:55:56');
+INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '20120820441', 1, '11', '518', 500, '2022-02-8 07:38:00');
+INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '20120820441', 2, NULL, NULL, NULL, '2022-02-8 07:38:00');
+INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '20120820441', 3, NULL, NULL, NULL, '2022-02-8 07:38:00');
+INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '1', 1, '11', '518', 2000, '2022-02-8 08:37:00');
+INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '1', 2, NULL, NULL, NULL, '2022-02-8 08:38:00');
+INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '1', 3, NULL, NULL, NULL, '2022-02-8 08:39:00');
+INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '19110103024', 1, '11', '518', 600, '2022-02-8 08:38:00');
+INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '19110103024', 2, NULL, NULL, NULL, '2022-02-8 08:38:00');
+INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '19110103024', 3, NULL, NULL, NULL, '2022-02-8 09:38:00');
+INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '19110103024', 1, '11', '518', 700, '2022-02-8 09:38:00');
+INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '19110103024', 2, NULL, NULL, NULL, '2022-02-8 09:38:00');
+INSERT INTO `log`(`log_id`, `account_id`, `type`, `building_id`, `dorm_id`, `payment_account`, `date`) VALUES (NULL, '1', 3, NULL, NULL, NULL, '2022-02-8 09:38:00');
 

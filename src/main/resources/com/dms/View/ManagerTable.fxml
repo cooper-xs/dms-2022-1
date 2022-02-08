@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dms.Controller.ManagerController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/MainStyle.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dms.Controller.ManagerController">
    <children>
-       <SplitPane dividerPositions="0.25" prefHeight="800.0" prefWidth="1200.0">
-          <items>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+      <HBox prefHeight="800.0" prefWidth="1200.0">
+         <children>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="300.0">
                  <children>
-                     <VBox prefHeight="800.0" prefWidth="300.0" spacing="30.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x04.png');">
+                     <VBox prefHeight="800.0" prefWidth="300.0" spacing="30.0" styleClass="left">
                          <padding>
                              <Insets top="40.0" />
                          </padding>
@@ -35,8 +35,8 @@
                             </HBox>
                             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="30.0">
                                <children>
-                                   <Button mnemonicParsing="false" onAction="#but_reset" prefHeight="40.0" prefWidth="70.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="修改密码" />
-                                   <Button mnemonicParsing="false" onAction="#but_refreshAll" prefHeight="40.0" prefWidth="70.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="刷新信息">
+                                   <Button mnemonicParsing="false" onAction="#but_reset" prefHeight="40.0" prefWidth="70.0" styleClass="but-1" text="修改密码" />
+                                   <Button mnemonicParsing="false" onAction="#but_refreshAll" prefHeight="40.0" prefWidth="70.0" styleClass="but-1" text="刷新信息">
                                        <HBox.margin>
                                            <Insets />
                                        </HBox.margin>
@@ -45,7 +45,7 @@
                             </HBox>
                             <HBox prefHeight="70.0" prefWidth="200.0">
                                <children>
-                                   <Button mnemonicParsing="false" onAction="#but_person" prefHeight="70.0" prefWidth="170.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x06.png');" text="个人信息">
+                                   <Button mnemonicParsing="false" onAction="#but_person" prefHeight="70.0" prefWidth="170.0" styleClass="but-1" text="个人信息">
                                        <HBox.margin>
                                            <Insets left="65.0" />
                                        </HBox.margin>
@@ -54,7 +54,7 @@
                             </HBox>
                             <HBox prefHeight="70.0" prefWidth="200.0">
                                <children>
-                                   <Button mnemonicParsing="false" onAction="#but_building" prefHeight="70.0" prefWidth="170.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x06.png');" text="楼宇信息">
+                                   <Button mnemonicParsing="false" onAction="#but_building" prefHeight="70.0" prefWidth="170.0" styleClass="but-1" text="楼宇信息">
                                        <HBox.margin>
                                            <Insets left="65.0" />
                                        </HBox.margin>
@@ -63,7 +63,7 @@
                             </HBox>
                         <HBox layoutX="10.0" layoutY="290.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#but_log" prefHeight="70.0" prefWidth="170.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x06.png');" text="日志信息">
+                              <Button mnemonicParsing="false" onAction="#but_log" prefHeight="70.0" prefWidth="170.0" styleClass="but-1" text="日志信息">
                                  <HBox.margin>
                                     <Insets left="65.0" />
                                  </HBox.margin>
@@ -72,7 +72,7 @@
                         </HBox>
                             <HBox prefHeight="70.0" prefWidth="200.0">
                                <children>
-                                   <Button mnemonicParsing="false" onAction="#but_logout" prefHeight="70.0" prefWidth="170.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x06.png');" text="退出系统">
+                                   <Button mnemonicParsing="false" onAction="#but_logout" prefHeight="70.0" prefWidth="170.0" styleClass="but-1" text="退出系统">
                                        <HBox.margin>
                                            <Insets left="65.0" />
                                        </HBox.margin>
@@ -83,7 +83,7 @@
                      </VBox>
                  </children>
               </AnchorPane>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="900.0">
                  <children>
                      <TabPane fx:id="tabs_father" prefHeight="800.0" prefWidth="895.0" tabClosingPolicy="UNAVAILABLE">
                         <tabs>
@@ -91,7 +91,7 @@
                                <content>
                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                       <children>
-                                          <VBox prefHeight="771.0" prefWidth="895.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/rightOfMain1.png');" />
+                                          <VBox prefHeight="771.0" prefWidth="895.0" styleClass="img1" />
                                       </children>
                                    </AnchorPane>
                                </content>
@@ -100,7 +100,7 @@
                                <content>
                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                       <children>
-                                          <VBox alignment="TOP_CENTER" prefHeight="769.0" prefWidth="895.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/rightOfMain.png');">
+                                          <VBox alignment="TOP_CENTER" prefHeight="769.0" prefWidth="895.0" styleClass="img2">
                                               <padding>
                                                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                                               </padding>
@@ -110,15 +110,12 @@
                                                          <Insets top="120.0" />
                                                      </VBox.margin>
                                                     <children>
-                                                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="姓名" textFill="WHITE">
+                                                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="100.0" styleClass="txt-tab" text="姓名">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
-                                                   <font>
-                                                      <Font name="System Bold" size="13.0" />
-                                                   </font>
                                                         </Label>
-                                                        <TextField fx:id="txt_managerName" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                        <TextField fx:id="txt_managerName" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
@@ -127,15 +124,12 @@
                                                  </HBox>
                                                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="895.0" spacing="30.0">
                                                     <children>
-                                                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="宿舍" textFill="WHITE">
+                                                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="100.0" styleClass="txt-tab" text="工号">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
-                                                   <font>
-                                                      <Font name="System Bold Italic" size="13.0" />
-                                                   </font>
                                                         </Label>
-                                                        <TextField fx:id="txt_managerId" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                        <TextField fx:id="txt_managerId" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
@@ -144,15 +138,12 @@
                                                  </HBox>
                                                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="895.0" spacing="30.0">
                                                     <children>
-                                                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="联系方式" textFill="WHITE">
+                                                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="100.0" styleClass="txt-tab" text="联系方式">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
-                                                   <font>
-                                                      <Font name="System Bold" size="13.0" />
-                                                   </font>
                                                         </Label>
-                                                        <TextField fx:id="txt_managerContact" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                        <TextField fx:id="txt_managerContact" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
@@ -161,15 +152,12 @@
                                                  </HBox>
                                                  <HBox alignment="CENTER" layoutX="40.0" layoutY="320.0" prefHeight="80.0" prefWidth="895.0" spacing="30.0">
                                                     <children>
-                                                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="所管理楼宇" textFill="WHITE">
+                                                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="100.0" styleClass="txt-tab" text="所管理楼宇">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
-                                                   <font>
-                                                      <Font name="System Bold Italic" size="14.0" />
-                                                   </font>
                                                         </Label>
-                                                        <TextField fx:id="txt_managerBuilding" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                        <TextField fx:id="txt_managerBuilding" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
@@ -178,7 +166,7 @@
                                                  </HBox>
                                                  <HBox prefHeight="40.0" prefWidth="895.0">
                                                     <children>
-                                                        <Label fx:id="lab_messageInPerson" alignment="CENTER" prefHeight="40.0" prefWidth="895.0" />
+                                                        <Label fx:id="lab_messageInPerson" alignment="CENTER" prefHeight="40.0" prefWidth="895.0" styleClass="txt-2" />
                                                     </children>
                                                  </HBox>
                                                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="895.0" spacing="60.0">
@@ -186,12 +174,12 @@
                                                          <Insets left="200.0" right="200.0" />
                                                      </padding>
                                                     <children>
-                                                        <Button mnemonicParsing="false" onAction="#but_personEdit" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="编辑">
+                                                        <Button mnemonicParsing="false" onAction="#but_personEdit" prefHeight="40.0" prefWidth="60.0" styleClass="but-1" text="编辑">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
                                                         </Button>
-                                                        <Button mnemonicParsing="false" onAction="#but_personSave" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="保存">
+                                                        <Button mnemonicParsing="false" onAction="#but_personSave" prefHeight="40.0" prefWidth="60.0" styleClass="but-1" text="保存">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
@@ -213,27 +201,27 @@
                                       <children>
                                           <VBox prefHeight="770.0" prefWidth="895.0">
                                              <children>
-                                                 <VBox prefHeight="770.0" prefWidth="895.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/rightOfMain.png');">
+                                                 <VBox prefHeight="770.0" prefWidth="895.0" styleClass="img2">
                                                      <padding>
                                                          <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                                                      </padding>
                                                     <children>
                                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="835.0" spacing="10.0">
                                                            <children>
-                                                      <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_resetSearch" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="重置" />
-                                                               <TextField fx:id="txt_building_idInBuilding" prefHeight="40.0" prefWidth="100.0" promptText="请输入楼号" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;" />
+                                                      <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_resetSearch" prefHeight="40.0" prefWidth="60.0" styleClass="but-1" text="重置" />
+                                                               <TextField fx:id="txt_building_idInBuilding" prefHeight="40.0" prefWidth="100.0" promptText="请输入楼号" styleClass="inp-1" />
                                                                <Label text="#">
                                                                    <font>
                                                                        <Font size="18.0" />
                                                                    </font>
                                                                </Label>
-                                                               <TextField fx:id="txt_dorm_id_InBuilding" prefHeight="40.0" prefWidth="100.0" promptText="请输入宿舍号" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;" />
-                                                               <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_searchInBuilding" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="查找">
+                                                               <TextField fx:id="txt_dorm_id_InBuilding" prefHeight="40.0" prefWidth="100.0" promptText="请输入宿舍号" styleClass="inp-1" />
+                                                               <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_searchInBuilding" prefHeight="40.0" prefWidth="60.0" styleClass="but-1" text="查找">
                                                                    <HBox.margin>
                                                                        <Insets left="20.0" />
                                                                    </HBox.margin>
                                                                </Button>
-                                                               <Label fx:id="lab_messageInBuilding" alignment="CENTER" prefHeight="40.0" prefWidth="100.0" />
+                                                               <Label fx:id="lab_messageInBuilding" alignment="CENTER" prefHeight="40.0" prefWidth="100.0" styleClass="txt-2" />
                                                            </children>
                                                         </HBox>
                                                         <TableView fx:id="table_building" prefHeight="500.0" prefWidth="835.0">
@@ -248,7 +236,7 @@
                                                         </TableView>
                                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                                            <children>
-                                                               <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_jumpToDorm" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="查看">
+                                                               <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_jumpToDorm" prefHeight="40.0" prefWidth="60.0" styleClass="but-1" text="查看">
                                                                    <HBox.margin>
                                                                        <Insets left="120.0" right="20.0" />
                                                                    </HBox.margin>
@@ -268,55 +256,49 @@
                                <content>
                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                       <children>
-                                          <VBox prefHeight="770.0" prefWidth="895.0" spacing="30.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/rightOfMain.png');">
+                                          <VBox prefHeight="770.0" prefWidth="895.0" spacing="30.0" styleClass="img2">
                                               <padding>
                                                   <Insets bottom="20.0" left="20.0" right="20.0" top="100.0" />
                                               </padding>
                                              <children>
                                                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="13.0">
                                                     <children>
-                                                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="宿舍名称" textFill="WHITE">
+                                                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" styleClass="txt-tab" text="宿舍名称">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
-                                                            <font>
-                                                                <Font name="System Bold" size="16.0" />
-                                                            </font>
                                                         </Label>
-                                                        <TextField fx:id="txt_dormName" editable="false" prefHeight="40.0" prefWidth="170.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                        <TextField fx:id="txt_dormName" editable="false" prefHeight="40.0" prefWidth="170.0" styleClass="inp-1">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
                                                         </TextField>
-                                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_dormNameEdit" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="修改">
+                                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_dormNameEdit" prefHeight="40.0" prefWidth="60.0" styleClass="but-1" text="修改">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
                                                         </Button>
-                                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_dormNameSave" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="保存">
+                                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_dormNameSave" prefHeight="40.0" prefWidth="60.0" styleClass="but-1" text="保存">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
                                                         </Button>
-                                                        <Label fx:id="lab_messageInDorm" alignment="CENTER" prefHeight="40.0" prefWidth="90.0">
+                                                        <Label fx:id="lab_messageInDorm" alignment="CENTER" prefHeight="40.0" prefWidth="90.0" styleClass="txt-2">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
                                                         </Label>
-                                                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="宿舍金额" textFill="WHITE">
-                                                            <font>
-                                                                <Font name="System Bold" size="16.0" />
-                                                            </font>
+                                                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" styleClass="txt-tab" text="宿舍金额">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
                                                         </Label>
-                                                        <TextField fx:id="txt_dormMoney" editable="false" prefHeight="40.0" prefWidth="120.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                        <TextField fx:id="txt_dormMoney" editable="false" prefHeight="40.0" prefWidth="120.0" styleClass="inp-1">
                                                             <HBox.margin>
                                                                 <Insets />
                                                             </HBox.margin>
                                                         </TextField>
-                                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_saveMoney" prefHeight="40.0" prefWidth="80.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="前往缴费" />
+                                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_saveMoney" prefHeight="40.0" prefWidth="80.0" styleClass="but-1" text="前往缴费" />
                                                     </children>
                                                  </HBox>
                                                  <TableView fx:id="table_dorm" prefHeight="257.0" prefWidth="855.0">
@@ -337,7 +319,7 @@
                                                  </TableView>
                                                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                                     <children>
-                                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_jumpToStudent" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="查看">
+                                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_jumpToStudent" prefHeight="40.0" prefWidth="60.0" styleClass="but-1" text="查看">
                                                             <HBox.margin>
                                                                 <Insets left="120.0" right="20.0" />
                                                             </HBox.margin>
@@ -355,35 +337,29 @@
                                 <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                         <children>
-                                            <VBox prefHeight="769.0" prefWidth="895.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/rightOfMain.png');">
+                                            <VBox prefHeight="769.0" prefWidth="895.0" styleClass="img2">
                                                 <children>
-                                                    <HBox prefHeight="80.0" prefWidth="895.0">
+                                                    <HBox prefHeight="80.0" prefWidth="895.0" spacing="20.0">
                                                         <VBox.margin>
                                                             <Insets top="120.0" />
                                                         </VBox.margin>
                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="姓名" textFill="WHITE">
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" styleClass="txt-tab" text="姓名">
                                                                 <HBox.margin>
                                                                     <Insets left="100.0" top="20.0" />
                                                                 </HBox.margin>
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font>
                                                             </Label>
-                                                            <TextField fx:id="txt_name" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                            <TextField fx:id="txt_name" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                                 <HBox.margin>
                                                                     <Insets top="20.0" />
                                                                 </HBox.margin>
                                                             </TextField>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="性别" textFill="WHITE">
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" styleClass="txt-tab" text="性别">
                                                                 <HBox.margin>
                                                                     <Insets left="50.0" top="20.0" />
                                                                 </HBox.margin>
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font>
                                                             </Label>
-                                                            <TextField fx:id="txt_gender" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                            <TextField fx:id="txt_gender" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                                 <HBox.margin>
                                                                     <Insets top="20.0" />
                                                                 </HBox.margin>
@@ -393,44 +369,38 @@
                                                             </TextField>
                                                         </children>
                                                     </HBox>
-                                                    <HBox prefHeight="80.0" prefWidth="895.0">
+                                                    <HBox prefHeight="80.0" prefWidth="895.0" spacing="20.0">
                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="生日" textFill="WHITE">
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" styleClass="txt-tab" text="生日">
                                                                 <HBox.margin>
                                                                     <Insets left="100.0" top="20.0" />
                                                                 </HBox.margin>
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font>
                                                             </Label>
-                                                            <TextField fx:id="txt_birthday" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                            <TextField fx:id="txt_birthday" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                                 <HBox.margin>
                                                                     <Insets top="20.0" />
                                                                 </HBox.margin>
                                                             </TextField>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="联系方式" textFill="WHITE">
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" styleClass="txt-tab" text="联系方式">
                                                                 <HBox.margin>
                                                                     <Insets left="50.0" top="20.0" />
                                                                 </HBox.margin>
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font>
                                                             </Label>
-                                                            <TextField fx:id="txt_contact" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                            <TextField fx:id="txt_contact" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                                 <HBox.margin>
                                                                     <Insets top="20.0" />
                                                                 </HBox.margin>
                                                             </TextField>
                                                         </children>
                                                     </HBox>
-                                                    <HBox prefHeight="80.0" prefWidth="895.0">
+                                                    <HBox prefHeight="80.0" prefWidth="895.0" spacing="20.0">
                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="学号" textFill="WHITE">
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" styleClass="txt-tab" text="学号">
                                                                 <HBox.margin>
                                                                     <Insets left="100.0" top="20.0" />
                                                                 </HBox.margin>
                                                             </Label>
-                                                            <TextField fx:id="txt_student_id" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                            <TextField fx:id="txt_student_id" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                                 <HBox.margin>
                                                                     <Insets top="20.0" />
                                                                 </HBox.margin>
@@ -438,75 +408,60 @@
                                                                     <Tooltip text="不可修改" />
                                                                 </tooltip>
                                                             </TextField>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="学院" textFill="WHITE">
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" styleClass="txt-tab" text="学院">
                                                                 <HBox.margin>
                                                                     <Insets left="50.0" top="20.0" />
                                                                 </HBox.margin>
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font>
                                                             </Label>
-                                                            <TextField fx:id="txt_college" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                            <TextField fx:id="txt_college" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                                 <HBox.margin>
                                                                     <Insets top="20.0" />
                                                                 </HBox.margin>
                                                             </TextField>
                                                         </children>
                                                     </HBox>
-                                                    <HBox prefHeight="80.0" prefWidth="895.0">
+                                                    <HBox prefHeight="80.0" prefWidth="895.0" spacing="20.0">
                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="专业" textFill="WHITE">
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" styleClass="txt-tab" text="专业">
                                                                 <HBox.margin>
                                                                     <Insets left="100.0" top="20.0" />
                                                                 </HBox.margin>
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font>
                                                             </Label>
-                                                            <TextField fx:id="txt_major" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                            <TextField fx:id="txt_major" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                                 <HBox.margin>
                                                                     <Insets top="20.0" />
                                                                 </HBox.margin>
                                                             </TextField>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="班级" textFill="WHITE">
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" styleClass="txt-tab" text="班级">
                                                                 <HBox.margin>
                                                                     <Insets left="50.0" top="20.0" />
                                                                 </HBox.margin>
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font>
                                                             </Label>
-                                                            <TextField fx:id="txt_class" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                            <TextField fx:id="txt_class" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                                 <HBox.margin>
                                                                     <Insets top="20.0" />
                                                                 </HBox.margin>
                                                             </TextField>
                                                         </children>
                                                     </HBox>
-                                                    <HBox prefHeight="80.0" prefWidth="895.0">
+                                                    <HBox prefHeight="80.0" prefWidth="895.0" spacing="20.0">
                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="宿舍" textFill="WHITE">
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" styleClass="txt-tab" text="宿舍">
                                                                 <HBox.margin>
                                                                     <Insets left="100.0" top="20.0" />
                                                                 </HBox.margin>
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font>
                                                             </Label>
-                                                            <TextField fx:id="txt_dorm_id" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                            <TextField fx:id="txt_dorm_id" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                                 <HBox.margin>
                                                                     <Insets top="20.0" />
                                                                 </HBox.margin>
                                                             </TextField>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" text="床号" textFill="WHITE">
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="80.0" styleClass="txt-tab" text="床号">
                                                                 <HBox.margin>
                                                                     <Insets left="50.0" top="20.0" />
                                                                 </HBox.margin>
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font>
                                                             </Label>
-                                                            <TextField fx:id="txt_bed_id" editable="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;">
+                                                            <TextField fx:id="txt_bed_id" editable="false" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                                 <HBox.margin>
                                                                     <Insets top="20.0" />
                                                                 </HBox.margin>
@@ -515,7 +470,7 @@
                                                     </HBox>
                                                     <HBox prefHeight="40.0" prefWidth="895.0">
                                                         <children>
-                                                            <Label fx:id="lab_messageInStudent" alignment="CENTER" prefHeight="40.0" prefWidth="895.0" />
+                                                            <Label fx:id="lab_messageInStudent" alignment="CENTER" prefHeight="40.0" prefWidth="895.0" styleClass="txt-2" />
                                                         </children>
                                                     </HBox>
                                                     <HBox alignment="CENTER" prefHeight="40.0" prefWidth="895.0" spacing="60.0">
@@ -523,12 +478,12 @@
                                                             <Insets left="200.0" right="200.0" />
                                                         </padding>
                                                         <children>
-                                                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_studentEdit" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="编辑">
+                                                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_studentEdit" prefHeight="40.0" prefWidth="60.0" styleClass="but-1" text="编辑">
                                                                 <HBox.margin>
                                                                     <Insets />
                                                                 </HBox.margin>
                                                             </Button>
-                                                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_studentSave" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="保存">
+                                                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_studentSave" prefHeight="40.0" prefWidth="60.0" styleClass="but-1" text="保存">
                                                                 <HBox.margin>
                                                                     <Insets />
                                                                 </HBox.margin>
@@ -545,16 +500,16 @@
                                 <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                         <children>
-                                            <VBox alignment="TOP_CENTER" prefHeight="770.0" prefWidth="895.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/rightOfMain.png');">
+                                            <VBox alignment="TOP_CENTER" prefHeight="770.0" prefWidth="895.0" styleClass="img2">
                                                 <padding>
                                                     <Insets left="131.0" right="130.0" top="30.0" />
                                                 </padding>
                                                 <children>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                              <children>
-                                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_resetInLog" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="重置" />
-                                                <DatePicker fx:id="date_chooseInLog" prefHeight="40.0" prefWidth="150.0" />
-                                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_searchInLog" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="查看" />
+                                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_resetInLog" prefHeight="40.0" prefWidth="80.0" styleClass="but-1" text="查看所有" />
+                                                <DatePicker fx:id="date_chooseInLog" prefHeight="40.0" prefWidth="150.0" styleClass="inp-1" />
+                                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_searchInLog" prefHeight="40.0" prefWidth="60.0" styleClass="but-1" text="查看" />
                                              </children>
                                           </HBox>
                                                     <TableView fx:id="table_log" prefHeight="520.0" prefWidth="634.0">
@@ -578,34 +533,25 @@
                                 <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                         <children>
-                                            <VBox prefHeight="770.0" prefWidth="895.0" style="-fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/rightOfMain.png');">
+                                            <VBox prefHeight="770.0" prefWidth="895.0" styleClass="img2">
                                                 <padding>
                                                     <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                                                 </padding>
                                                 <children>
                                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="895.0" spacing="50.0">
                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="60.0" text="宿舍：" textFill="WHITE">
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font></Label>
-                                                            <TextField fx:id="txt_money_dormName" editable="false" prefHeight="40.0" prefWidth="170.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;" />
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="88.0" text="剩余金额：" textFill="WHITE">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font></Label>
-                                                            <TextField fx:id="txt_money_deposit" editable="false" prefHeight="40.0" prefWidth="170.0" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;" />
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="60.0" styleClass="txt-tab" text="宿舍：" />
+                                                            <TextField fx:id="txt_money_dormName" editable="false" prefHeight="40.0" prefWidth="170.0" styleClass="inp-1" />
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="100.0" styleClass="txt-tab" text="剩余金额：" />
+                                                            <TextField fx:id="txt_money_deposit" editable="false" prefHeight="40.0" prefWidth="170.0" styleClass="inp-1" />
                                                         </children>
                                                     </HBox>
                                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="90.0" text="缴费金额：" textFill="WHITE">
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font></Label>
-                                                            <TextField fx:id="txt_money_toSave" prefHeight="40.0" prefWidth="170.0" promptText="请输入缴费金额" style="-fx-border-color: #E4E2D5; -fx-border-radius: 2px; -fx-background-radius: 2px;" />
-                                                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_money_toSave" prefHeight="40.0" prefWidth="60.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="确认" />
-                                                            <Label fx:id="lab_money_message" alignment="CENTER" prefHeight="40.0" prefWidth="170.0" />
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="200.0" styleClass="txt-tab" text="缴费金额：" />
+                                                            <TextField fx:id="txt_money_toSave" prefHeight="40.0" prefWidth="170.0" promptText="请输入缴费金额" styleClass="inp-1" />
+                                                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_money_toSave" prefHeight="40.0" prefWidth="60.0" styleClass="but-1" text="确认" />
+                                                            <Label fx:id="lab_money_message" alignment="CENTER" prefHeight="40.0" prefWidth="170.0" styleClass="txt-2" />
                                                         </children>
                                                     </HBox>
                                                     <TableView fx:id="table_money" prefHeight="420.0" prefWidth="835.0">
@@ -638,11 +584,8 @@
                                                             <Insets bottom="30.0" />
                                                         </VBox.margin>
                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="200.0" text="请输入原始密码" textFill="WHITE">
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font></Label>
-                                                            <PasswordField fx:id="txt_passwordBefore" prefHeight="40.0" prefWidth="200.0">
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="200.0" styleClass="txt-tab" text="原始密码" />
+                                                            <PasswordField fx:id="txt_passwordBefore" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                                 <HBox.margin>
                                                                     <Insets />
                                                                 </HBox.margin>
@@ -654,11 +597,8 @@
                                                             <Insets bottom="30.0" />
                                                         </VBox.margin>
                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="200.0" text="请输入新密码" textFill="WHITE">
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font></Label>
-                                                            <PasswordField fx:id="txt_passwordNewOne" prefHeight="40.0" prefWidth="200.0">
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="200.0" styleClass="txt-tab" text="新密码" />
+                                                            <PasswordField fx:id="txt_passwordNewOne" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1">
                                                                 <HBox.margin>
                                                                     <Insets />
                                                                 </HBox.margin>
@@ -670,14 +610,11 @@
                                                             <Insets />
                                                         </VBox.margin>
                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="200.0" text="请再次输入一次新密码" textFill="WHITE">
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font></Label>
-                                                            <PasswordField fx:id="txt_passwordNewTow" prefHeight="40.0" prefWidth="200.0" />
+                                                            <Label alignment="CENTER" prefHeight="40.0" prefWidth="200.0" styleClass="txt-tab" text="确认新密码" />
+                                                            <PasswordField fx:id="txt_passwordNewTow" prefHeight="40.0" prefWidth="200.0" styleClass="inp-1" />
                                                         </children>
                                                     </HBox>
-                                                    <Label fx:id="lab_message_password" alignment="CENTER" prefHeight="55.0" prefWidth="835.0">
+                                                    <Label fx:id="lab_message_password" alignment="CENTER" prefHeight="55.0" prefWidth="835.0" styleClass="txt-2">
                                                         <VBox.margin>
                                                             <Insets />
                                                         </VBox.margin>
@@ -687,7 +624,7 @@
                                                             <Insets />
                                                         </VBox.margin>
                                                         <children>
-                                                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_resetPassword" prefHeight="40.0" prefWidth="80.0" style="-fx-background-radius: 2px; -fx-background-image: url('https://zxscode.top/wp-content/uploads/2022/01/dms0x05.png');" text="修改密码" />
+                                                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#but_resetPassword" prefHeight="40.0" prefWidth="80.0" styleClass="but-1" text="修改密码" />
                                                         </children>
                                                     </HBox>
                                                 </children>
@@ -700,7 +637,7 @@
                      </TabPane>
                  </children>
               </AnchorPane>
-          </items>
-       </SplitPane>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

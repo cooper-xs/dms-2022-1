@@ -1,0 +1,53 @@
+/*登录界面*/
+.hbox-login{
+    /*-fx-font-family: "SimHei";*/
+    -fx-font-size: 16px;
+    -fx-text-fill: #3f3f3f;
+    -fx-background-image: url('../img/login1.png');
+}
+/*输入框*/
+.inp-1{
+    -fx-border-color: #82B2B3;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+/*按钮*/
+.but-1{
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-background-image: url('../img/button2.png');
+    -fx-alignment: center;
+}
+/*鼠标聚焦按钮*/
+.but-1:hover{
+    -fx-background-image: url('../img/button1.png');
+}
+/*登录提示*/
+.txt-1{
+    -fx-font-family: "SimHei";
+    -fx-font-size: 16px;
+    -fx-text-fill: #D1251B;
+}
+/*其他提示*/
+.txt-2{
+    -fx-font-family: "SimHei";
+    -fx-font-size: 16px;
+}
+/*内容白字*/
+.txt-tab{
+    -fx-font-family: "SimHei";
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffffff;
+}
+/*背景1*/
+.img1{
+    -fx-background-image: url('../img/image1.png');
+}
+/*背景2*/
+.img2{
+    -fx-background-image: url('../img/image2.png');
+}
+/*左侧边栏*/
+.left{
+    -fx-background-image: url('../img/left.png');
+}

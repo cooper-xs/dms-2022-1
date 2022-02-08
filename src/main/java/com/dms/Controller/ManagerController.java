@@ -24,7 +24,7 @@ public class ManagerController {
     private Manager manager;
     private Student observedStudent;
     private Dorm observedDorm;
-    private final List<Log> observedLogs = new ArrayList<>();
+    private List<Log> observedLogs = new ArrayList<>();
     private final ObservableList<BeanDorm> dataInBuilding = FXCollections.observableArrayList();
     private final ObservableList<BeanPerson> dataInDorm = FXCollections.observableArrayList();
     private final ObservableList<BeanLog> dataInLog = FXCollections.observableArrayList();
@@ -249,7 +249,7 @@ public class ManagerController {
             boolean flag = biz.resetPassword(Session.getNumber(), TranMD5.md5(txt_passwordBefore.getText()), TranMD5.md5(txt_passwordNewOne.getText()),TranMD5.md5(txt_passwordNewTow.getText()));
             if(flag) {
                 lab_message_password.setText("修改密码成功");
-                lab_message_password.setTextFill(Color.GREEN);
+                lab_message_password.setTextFill(Color.rgb(16,185,16));
                 txt_passwordBefore.setText("");
                 txt_passwordNewOne.setText("");
                 txt_passwordNewTow.setText("");
@@ -344,7 +344,13 @@ public class ManagerController {
         int cntMoneyLog = 0;
         for(Log log : moneyLogList) {
             if(log.getType() == 1) {
-                BeanMoney beanMoney = new BeanMoney(++cntMoneyLog, log.getBuilding_id() + "#" + log.getDorm_id(), String.valueOf(log.getAccount()), log.getAccount_id(), log.getAccount_id(), log.getDate());
+                String name = "";
+                if(biz.selectStudentById(log.getAccount_id()) != null) {
+                    name = biz.selectStudentById(log.getAccount_id()).getName();
+                } else {
+                    name = biz.selectManagerById(log.getAccount_id()).getName();
+                }
+                BeanMoney beanMoney = new BeanMoney(++cntMoneyLog, log.getBuilding_id() + "#" + log.getDorm_id(), String.valueOf(log.getAccount()), name, log.getAccount_id(), log.getDate());
                 dataMoney.add(beanMoney);
             }
         }
@@ -366,6 +372,9 @@ public class ManagerController {
         txt_bed_id.setText(observedStudent.getBed_id() + "");
     }
 
+    /**
+     * note 刷新日志tab数据
+     */
     private void refreshLogInfo() {
         dataInLog.clear();
         int cntSignLog = 0;
@@ -451,7 +460,7 @@ public class ManagerController {
         refreshAll();
         if(flag) {
             lab_messageInPerson.setText("保存成功！");
-            lab_messageInPerson.setTextFill(Color.GREEN);
+            lab_messageInPerson.setTextFill(Color.rgb(16,185,16));
         } else {
             lab_messageInPerson.setText("保存失败！");
             lab_messageInPerson.setTextFill(Color.RED);
@@ -483,6 +492,8 @@ public class ManagerController {
                     BeanDorm beanDorm = new BeanDorm(++ cntAllDorm, dorm.getBuilding_id() + "#" + dorm.getDorm_id(), dorm.getName(), studentList.size() + "/" + dorm.getPeople_num(), String.valueOf(studentNameList), dorm.getDeposit());
                     dataInBuilding.add(beanDorm);
                 }
+                lab_messageInBuilding.setText("查找成功");
+                lab_messageInBuilding.setTextFill(Color.rgb(16,185,16));
             } else {
                 // x2 只有宿舍，报错输入楼宇号
                 lab_messageInBuilding.setText("请先输入楼宇编号");
@@ -505,6 +516,13 @@ public class ManagerController {
                     BeanDorm beanDorm = new BeanDorm(++ cntAllDorm, dorm.getBuilding_id() + "#" + dorm.getDorm_id(), dorm.getName(), studentList.size() + "/" + dorm.getPeople_num(), String.valueOf(studentNameList), dorm.getDeposit());
                     dataInBuilding.add(beanDorm);
                 }
+                if(cntAllDorm != 0) {
+                    lab_messageInBuilding.setText("查找成功");
+                    lab_messageInBuilding.setTextFill(Color.rgb(16,185,16));
+                } else {
+                    lab_messageInBuilding.setText("查找为空");
+                    lab_messageInBuilding.setTextFill(Color.RED);
+                }
             } else {
                 // x4 包含所有信息，精确查找
                 try {
@@ -519,6 +537,8 @@ public class ManagerController {
                     }
                     BeanDorm beanDorm = new BeanDorm(1, dorm.getBuilding_id() + "#" + dorm.getDorm_id(), dorm.getName(), studentList.size() + "/" + dorm.getPeople_num(), String.valueOf(studentNameList), dorm.getDeposit());
                     dataInBuilding.add(beanDorm);
+                    lab_messageInBuilding.setText("查找成功");
+                    lab_messageInBuilding.setTextFill(Color.rgb(16,185,16));
                 } catch (NoSuchAccountException e) {
                     lab_messageInBuilding.setText("宿舍不存在");
                     lab_messageInBuilding.setTextFill(Color.RED);
@@ -549,7 +569,7 @@ public class ManagerController {
         refreshAll();
         if(flag) {
             lab_messageInDorm.setText("保存成功！");
-            lab_messageInDorm.setTextFill(Color.GREEN);
+            lab_messageInDorm.setTextFill(Color.rgb(16,185,16));
         } else {
             lab_messageInDorm.setText("保存失败！");
             lab_messageInDorm.setTextFill(Color.RED);
@@ -583,7 +603,7 @@ public class ManagerController {
             refreshAll();
             if(flag) {
                 lab_money_message.setText("缴费成功！");
-                lab_money_message.setTextFill(Color.GREEN);
+                lab_money_message.setTextFill(Color.rgb(16,185,16));
                 try {
                     observedDorm = biz.selectDormByBuilding_idAndDorm_id(observedDorm.getBuilding_id(), observedDorm.getDorm_id());
                     refreshDormInfo();
@@ -710,7 +730,7 @@ public class ManagerController {
         refreshAll();
         if(flag) {
             lab_messageInStudent.setText("保存成功！");
-            lab_messageInStudent.setTextFill(Color.GREEN);
+            lab_messageInStudent.setTextFill(Color.rgb(16,185,16));
         } else {
             lab_messageInStudent.setText("保存失败！");
             lab_messageInStudent.setTextFill(Color.RED);
@@ -759,11 +779,13 @@ public class ManagerController {
     }
 
     /**
-     * note 清空一选择日期
+     * note 清空选择日期
      * @param actionEvent
      */
     @FXML
     public void but_resetInLog(ActionEvent actionEvent) {
+        observedLogs = biz.selectAllLog();
+        refreshLogInfo();
     }
 
     /**
@@ -772,6 +794,11 @@ public class ManagerController {
      */
     @FXML
     public void but_searchInLog(ActionEvent actionEvent) {
+        if(date_chooseInLog.getValue() == null) {
+            observedLogs = biz.selectAllLog();
+            refreshLogInfo();
+            return;
+        }
         observedLogs.clear();
         LocalDate date = date_chooseInLog.getValue();
         List<Log> logList = biz.selectAllLog();

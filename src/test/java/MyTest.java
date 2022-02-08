@@ -24,7 +24,7 @@ public class MyTest {
     public void TestResetPassword() {
         Biz biz = new BizImpl();
         try {
-            System.out.println(biz.resetPassword("1", "1", "c4ca4238a0b923820dcc509a6f75849b", "c4ca4238a0b923820dcc509a6f75849b"));
+            System.out.println(biz.resetPassword("1", TranMD5.md5("1"), TranMD5.md5("2"), TranMD5.md5("2")));
         } catch (PasswordWrongException e) {
             System.out.println("密码错误");
         } catch (PasswordNotSameException e) {

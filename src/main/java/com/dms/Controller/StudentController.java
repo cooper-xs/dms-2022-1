@@ -205,19 +205,6 @@ public class StudentController {
      */
     @FXML
     public void initialize() {
-        // note 为操作列定义一个简单的布尔单元格值，以便该列仅显示为非空行。
-        col_operate.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<BeanPerson, Boolean>, ObservableValue<Boolean>>() {
-            @Override public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<BeanPerson, Boolean> features) {
-                return new SimpleBooleanProperty(features.getValue() != null);
-            }
-        });
-        // note 为表格中的每一行创建一个带有添加按钮的单元格值工厂。
-        col_operate.setCellFactory(new Callback<TableColumn<BeanPerson, Boolean>, TableCell<BeanPerson, Boolean>>() {
-            @Override public TableCell<BeanPerson, Boolean> call(TableColumn<BeanPerson, Boolean> personBooleanTableColumn) {
-                return new findPerson(table_dorm);
-            }
-        });
-
         // note 初始化被观察者是自己
         observed = biz.selectStudentById(Session.getNumber());
         // note 刷新
@@ -257,6 +244,18 @@ public class StudentController {
         col_money_person.setCellValueFactory(new PropertyValueFactory<BeanMoney, String>("person"));
         col_money_personId.setCellValueFactory(new PropertyValueFactory<BeanMoney, String>("personId"));
         col_money_date.setCellValueFactory(new PropertyValueFactory<BeanMoney, String>("date"));
+        // note 为操作列定义一个简单的布尔单元格值，以便该列仅显示为非空行。
+        col_operate.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<BeanPerson, Boolean>, ObservableValue<Boolean>>() {
+            @Override public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<BeanPerson, Boolean> features) {
+                return new SimpleBooleanProperty(features.getValue() != null);
+            }
+        });
+        // note 为表格中的每一行创建一个带有添加按钮的单元格值工厂。
+        col_operate.setCellFactory(new Callback<TableColumn<BeanPerson, Boolean>, TableCell<BeanPerson, Boolean>>() {
+            @Override public TableCell<BeanPerson, Boolean> call(TableColumn<BeanPerson, Boolean> personBooleanTableColumn) {
+                return new findPerson(table_dorm);
+            }
+        });
     }
 
     // note 个人信息
@@ -267,6 +266,7 @@ public class StudentController {
     @FXML
     public void but_person(ActionEvent actionEvent) {
         observed = biz.selectStudentById(Session.getNumber());
+        refreshAll();
         // note 如果父tab已经有该子tab，聚焦；否则，添加到父tab（下同）
         if(tabs_father.getTabs().contains(tab_person)) {
             SingleSelectionModel<Tab> selectionModel = tabs_father.getSelectionModel();
@@ -283,17 +283,22 @@ public class StudentController {
      */
     @FXML
     public void but_personEdit(ActionEvent actionEvent) {
-        // note 设置内容可编辑，并给予信息提示
-        txt_name.setEditable(true);
-        txt_birthday.setEditable(true);
-        txt_contact.setEditable(true);
-        txt_college.setEditable(true);
-        txt_major.setEditable(true);
-        txt_class.setEditable(true);
-        txt_dorm_id.setEditable(true);
-        txt_bed_id.setEditable(true);
-        lab_messageInPerson.setText("正在编辑");
-        lab_messageInPerson.setTextFill(Color.BLUE);
+        if(!observed.equals(student)) {
+            lab_messageInPerson.setText("不允许编辑他人信息");
+            lab_messageInPerson.setTextFill(Color.RED);
+        } else {
+            // note 设置内容可编辑，并给予信息提示
+            txt_name.setEditable(true);
+            txt_birthday.setEditable(true);
+            txt_contact.setEditable(true);
+            txt_college.setEditable(true);
+            txt_major.setEditable(true);
+            txt_class.setEditable(true);
+            txt_dorm_id.setEditable(true);
+            txt_bed_id.setEditable(true);
+            lab_messageInPerson.setText("正在编辑");
+            lab_messageInPerson.setTextFill(Color.BLUE);
+        }
     }
 
     /**
@@ -330,7 +335,7 @@ public class StudentController {
         refreshAll();
         if(flag) {
             lab_messageInPerson.setText("保存成功！");
-            lab_messageInPerson.setTextFill(Color.GREEN);
+            lab_messageInPerson.setTextFill(Color.rgb(16,185,16));
         } else {
             lab_messageInPerson.setText("保存失败！");
             lab_messageInPerson.setTextFill(Color.RED);
@@ -377,7 +382,7 @@ public class StudentController {
         refreshAll();
         if(flag) {
             lab_messageInDorm.setText("保存成功！");
-            lab_messageInDorm.setTextFill(Color.GREEN);
+            lab_messageInDorm.setTextFill(Color.rgb(16,185,16));
         } else {
             lab_messageInDorm.setText("保存失败！");
             lab_messageInDorm.setTextFill(Color.RED);
@@ -428,7 +433,7 @@ public class StudentController {
             refreshAll();
             if(flag) {
                 lab_messageInLog.setText("已签退");
-                lab_messageInLog.setTextFill(Color.GREEN);
+                lab_messageInLog.setTextFill(Color.rgb(16,185,16));
             } else {
                 lab_messageInLog.setText("签退失败");
                 lab_messageInLog.setTextFill(Color.RED);
@@ -438,7 +443,7 @@ public class StudentController {
             refreshAll();
             if(flag) {
                 lab_messageInLog.setText("已签到");
-                lab_messageInLog.setTextFill(Color.GREEN);
+                lab_messageInLog.setTextFill(Color.rgb(16,185,16));
             } else {
                 lab_messageInLog.setText("签到失败");
                 lab_messageInLog.setTextFill(Color.RED);
@@ -475,7 +480,7 @@ public class StudentController {
             refreshAll();
             if(flag) {
                 lab_money_message.setText("缴费成功！");
-                lab_money_message.setTextFill(Color.GREEN);
+                lab_money_message.setTextFill(Color.rgb(16,185,16));
                 try {
                     dorm = biz.selectDormByBuilding_idAndDorm_id(dorm.getBuilding_id(), dorm.getDorm_id());
                 } catch (NoSuchAccountException e) {
@@ -521,6 +526,7 @@ public class StudentController {
      * @param actionEvent
      */
     public void but_refreshAll(ActionEvent actionEvent) {
+        observed = biz.selectStudentById(Session.getNumber());
         refreshAll();
     }
 
@@ -534,6 +540,7 @@ public class StudentController {
             dorm = biz.selectDormByBuilding_idAndDorm_id(student.getBuilding_id(), student.getDorm_id());
             building = biz.selectBuildingByBuilding_id(student.getBuilding_id());
             manager = biz.selectManagerById(building.getManager_id());
+            // observed = student;
             // note 设置主页面和分页面的其他信息
             lab_name.setText(student.getName());
             but_message.setText(student.getStatus() == 1 ? "签退" : "签到");
@@ -597,7 +604,13 @@ public class StudentController {
             List<Log> moneyLogList = biz.selectLogByBuilding_idAndDorm_id(dorm.getBuilding_id(), dorm.getDorm_id());
             int cntMoneyLog = 0;
             for(Log log : moneyLogList) {
-                BeanMoney beanMoney = new BeanMoney(++cntMoneyLog, log.getBuilding_id() + "#" + log.getDorm_id(), String.valueOf(log.getAccount()), log.getAccount_id(), log.getAccount_id(), log.getDate());
+                String name = "";
+                if(biz.selectStudentById(log.getAccount_id()) != null) {
+                    name = biz.selectStudentById(log.getAccount_id()).getName();
+                } else {
+                    name = biz.selectManagerById(log.getAccount_id()).getName();
+                }
+                BeanMoney beanMoney = new BeanMoney(++cntMoneyLog, log.getBuilding_id() + "#" + log.getDorm_id(), String.valueOf(log.getAccount()), name, log.getAccount_id(), log.getDate());
                 dataMoney.add(beanMoney);
             }
         } catch (NoSuchAccountException e) {
@@ -631,7 +644,7 @@ public class StudentController {
             boolean flag = biz.resetPassword(Session.getNumber(), TranMD5.md5(txt_passwordBefore.getText()), TranMD5.md5(txt_passwordNewOne.getText()),TranMD5.md5(txt_passwordNewTow.getText()));
             if(flag) {
                 lab_message_password.setText("修改密码成功");
-                lab_message_password.setTextFill(Color.GREEN);
+                lab_message_password.setTextFill(Color.rgb(16,185,16));
                 txt_passwordBefore.setText("");
                 txt_passwordNewOne.setText("");
                 txt_passwordNewTow.setText("");

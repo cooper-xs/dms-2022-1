@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="dorm manager system">
+    <output-path>$PROJECT_DIR$/out/artifacts/dorm_manager_system</output-path>
+    <root id="root">
+      <element id="archive" name="dms2022_1.jar">
+        <element id="module-output" name="dms2022-1" />
+      </element>
+    </root>
+  </artifact>
+</component>

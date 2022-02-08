@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class MainApplication extends Application {
     @FXML
@@ -25,7 +26,7 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws Exception {
         this.primaryStage = stage;
         this.primaryStage.setTitle("宿舍管理系统");
-        stage.getIcons().add(new Image("file:src/main/resources/img/dms0x00.png"));
+        this.primaryStage.getIcons().add(new Image("file:src/main/resources/com/dms/img/dms0x00.png"));
         initLogin(); // 打开窗口
     }
 
@@ -36,12 +37,14 @@ public class MainApplication extends Application {
         HBox root = fxmlLoader.load();
         // x3.获取Controller用于关闭
         LoginController controller = fxmlLoader.getController();
-        controller.setLoginStage(primaryStage);
+        controller.setLoginStage(this.primaryStage);
         // x4.生成对应Scene
         Scene scene = new Scene(root,700,500);
-        primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
-        primaryStage.show();
+        // x5.关联css样式
+//        scene.getStylesheets().add(MainApplication.class.getResource("com/dms/css/MainStyle.css").toExternalForm());
+        this.primaryStage.setScene(scene);
+        this.primaryStage.setResizable(false);
+        this.primaryStage.show();
     }
 
     public void initStudentTable() throws IOException {
@@ -56,11 +59,7 @@ public class MainApplication extends Application {
         stage.setTitle("学生界面");
         stage.setResizable(false); // 不可调整大小
         stage.initOwner(primaryStage); // stage 的拥有者是 primaryStage
-        stage.getIcons().add(new Image("file:src/main/resources/img/dms0x00.png"));
-
-
-
-
+        stage.getIcons().add(new Image("file:src/main/resources/com/dms/img/dms0x00.png"));
         stage.setScene(scene);
         // x5.显示
         stage.showAndWait();
@@ -78,10 +77,7 @@ public class MainApplication extends Application {
         stage.setTitle("宿舍管理员界面");
         stage.setResizable(false); // 不可调整大小
         stage.initOwner(primaryStage); // stage 的拥有者是 primaryStage
-        stage.getIcons().add(new Image("file:src/main/resources/img/dms0x00.png"));
-
-
-
+        stage.getIcons().add(new Image("file:src/main/resources/com/dms/img/dms0x00.png"));
         stage.setScene(scene);
         // x5.显示
         stage.showAndWait();
@@ -102,11 +98,7 @@ public class MainApplication extends Application {
         stage.setTitle("admin界面");
         stage.setResizable(false); // 不可调整大小
         stage.initOwner(primaryStage); // stage 的拥有者是 primaryStage
-        stage.getIcons().add(new Image("file:src/main/resources/img/dms0x00.png"));
-
-
-
-
+        stage.getIcons().add(new Image("file:src/main/resources/com/dms/img/dms0x00.png"));
         stage.setScene(scene);
         // x5.显示
         stage.show();
